@@ -154,7 +154,7 @@ public class LevelController : MonoBehaviour
     IEnumerator Gomenu()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 }

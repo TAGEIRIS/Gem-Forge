@@ -22,7 +22,7 @@ public class MainMenuPanel : MonoBehaviour
     {
         StartButton.onClick.AddListener(call: () =>
         {
-            SceneManager.LoadScene("02-GamePlay");
+            SceneManager.LoadScene("02-SelectPlace");
         });
     }
 
