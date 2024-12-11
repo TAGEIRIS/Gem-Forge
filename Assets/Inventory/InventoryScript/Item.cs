@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite itemImage;
     public int itemNumber;
+    public int itemNumberMax=99;
     [TextArea]public string itemInfo;
    
 

@@ -5,22 +5,31 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
+    //物品信息
     public Item slotItem;
+    //UI上的显示
     public Image slotImage;
+    //物品个数
     public Text slotNum;
+    //装备管理器
     public InventoryManager inventoryManager;
+    //下一件装备应该放的位置
+    public int slotIndex;
 
+    //更新slot显示
     public void UpdateSlot()
     {
-        if(slotItem != null&&slotItem.itemNumber<=0)
+        //为零则隐藏Slot
+        if (slotItem != null && slotItem.itemNumber > 0)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+            slotNum.text = slotItem.itemNumber.ToString();
         }
         else
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
-        slotNum.text = slotItem.itemNumber.ToString();
+
     }
 
     private void OnEnable()
@@ -35,15 +44,36 @@ public class Slot : MonoBehaviour
 
     public void AddSlot()
     {
-        slotItem.itemNumber++;
-        inventoryManager.AddSlotToList(slotItem);
-        UpdateSlot();
+        if (slotItem.itemNumber < slotItem.itemNumberMax)
+        {
+            slotItem.itemNumber++;
+            inventoryManager.AddSlotToList(slotItem);
+            UpdateSlot();
+        }
     }
 
     public void SubSlot()
     {
-        slotItem.itemNumber--;
-        inventoryManager.CheckEmpty(slotItem);
-        UpdateSlot();
+        if (slotItem.itemNumber > 0)
+        {
+            slotItem.itemNumber--;
+            inventoryManager.CheckEmpty(slotItem);
+            UpdateSlot();
+        }
+    }
+
+    public void Weapon()
+    {
+        if (slotItem != null && slotItem.itemNumber > 0)
+        {
+            for (int i = 0; i < inventoryManager.equipmentPositions.Length; i++)
+            {
+                if(!inventoryManager.equippedItems.ContainsKey(i))
+                {
+                    inventoryManager.EquipItem(slotItem,i,this);
+                    break;
+                }
+            }
+        }
     }
 }

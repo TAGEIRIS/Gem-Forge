@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3cf999b2f976b41a63a2fb3fe99812, type: 3}
   m_Name: a black 1
   m_EditorClassIdentifier: 
-  item: {fileID: 3256677046982231737, guid: 3b37a753006bf2b41b8592be6b71e356, type: 3}
+  item: {fileID: 3652266553260401869, guid: d49745ee79de2764f87ae007f28e8026, type: 3}
   itemName: blue
   itemImage: {fileID: 0}
-  itemNumber: 0
+  itemNumber: -1
+  itemNumberMax: 99
   itemInfo: 

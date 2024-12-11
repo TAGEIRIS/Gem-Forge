@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Weapon1 : MonoBehaviour
+public class WeaponBase : MonoBehaviour
 {
     public bool isAttack = false;//是否可以攻击，取决于范围内有无敌人
     public bool isCooling = false;//攻击冷却
