@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03-GamePlay.unity
     guid: 44c54507adf2d2e448ffc89db17506d6
-  - enabled: 1
-    path: Assets/Scenes/Bag.unity
-    guid: fec9b005ff4339a4bb55a836ac7b7e3a
   m_configObjects: {}

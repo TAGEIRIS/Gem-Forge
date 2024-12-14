@@ -22,12 +22,14 @@ public class Slot : MonoBehaviour
         //ÎªÁãÔòÒþ²ØSlot
         if (slotItem != null && slotItem.itemNumber > 0)
         {
-            gameObject.SetActive(true);
+            slotImage.enabled = true;
             slotNum.text = slotItem.itemNumber.ToString();
+            slotNum.enabled = true;
         }
         else
         {
-            gameObject.SetActive(false);
+            slotImage.enabled = false;
+            slotNum.enabled = false;
         }
 
     }
@@ -57,7 +59,6 @@ public class Slot : MonoBehaviour
         if (slotItem.itemNumber > 0)
         {
             slotItem.itemNumber--;
-            inventoryManager.CheckEmpty(slotItem);
             UpdateSlot();
         }
     }

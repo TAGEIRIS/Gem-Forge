@@ -10,8 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b4becd32222f7d43a2995d4ea6ef40f, type: 3}
-  m_Name: Ku
+  m_Name: EquipingKu
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: f2e6092955eeb3a43a2b6f47ae6210fc, type: 2}
-  - {fileID: 11400000, guid: f74e163d19b3b394fbcff873368e672b, type: 2}
+  itemList: []
+  ObjectList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

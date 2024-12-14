@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class ToBag : MonoBehaviour
 {
     public Button toBagButton;
+    public UIManager manager;
     void Start()
     {
         toBagButton.onClick.AddListener(call: () =>
         {
-            SceneManager.LoadScene("Bag");
+            manager.ToBag();
         });
     }
 

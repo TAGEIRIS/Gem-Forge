@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     static InventoryManager instance;
-    public Inventory mgBag;
+    public Inventory Ku;
     public Text itemInformation;
 
     //预设位置
@@ -17,33 +17,15 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<int,GameObject> equippedItems=new 
         Dictionary<int,GameObject>();
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
     public void AddSlotToList(Item item)
     {
-        if(!mgBag.itemList.Contains(item))
+        if(!Ku.itemList.Contains(item))
         {
-            mgBag.itemList.Add(item);
+            Ku.itemList.Add(item);
+            if(item.itemNumber==0)item.itemNumber++;
         }
     }
 
-    public void CheckEmpty(Item item)
-    {
-        if (item.itemNumber<=0)
-        {
-            mgBag.itemList.Remove(item);
-        }
-    }
 
     public void EquipItem(Item item,int index,Slot slot)
     {
@@ -57,17 +39,15 @@ public class InventoryManager : MonoBehaviour
 
             //实例化装备，并放置到预设位置
             GameObject equippedItem = Instantiate(item.item,
-                equipmentPositions[index].position, equipmentPositions[index].rotation);
+                new Vector3 (0,0,0), equipmentPositions[index].rotation);
             equippedItem.transform.SetParent(equipmentPositions[index], false);
-            equippedItem.transform.localScale = new Vector3(100,100,1);
+            equippedItem.transform.localScale = new Vector3(1,1,1);
             //将装备与位置关联
             equippedItems[index] = equippedItem;
 
             //减少物品数量
             slot.slotItem.itemNumber--;
             slot.UpdateSlot();
-            
-            CheckEmpty(item);
         }
     }
 
@@ -75,6 +55,19 @@ public class InventoryManager : MonoBehaviour
     {
         if (equippedItems.ContainsKey(index))
         {
+            string s = equippedItems[index].name;
+            s=s.TrimEnd("(Clone)");
+            foreach (Item item in Ku.itemList)
+            {
+                if (item.item.name == s)
+                {
+                    item.itemNumber++;
+                    GameObject gameObject=GameObject.Find(item.name);
+                    Slot slot=gameObject.GetComponent<Slot>();
+                    slot.UpdateSlot();
+                    break;
+                }
+            }
             Destroy(equippedItems[index]);
             equippedItems.Remove(index);
         }
