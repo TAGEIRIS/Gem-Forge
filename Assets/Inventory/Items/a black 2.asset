@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: a black 2
   m_EditorClassIdentifier: 
   item: {fileID: 1882612141085555730, guid: fbdc95e1833dc2a4da4100e1c634ac50, type: 3}
-  itemName: 
   itemImage: {fileID: 0}
-  itemNumber: 46
+  itemNumber: 99
   itemNumberMax: 99
   itemInfo: 

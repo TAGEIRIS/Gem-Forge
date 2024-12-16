@@ -7,6 +7,22 @@ public class UIManager : MonoBehaviour
     public GameObject Bag;
     public GameObject Sllect;
     public GameObject UnWeaponButtons;
+
+    private void Awake()
+    {
+        if (Bag == null)
+        {
+            Bag = GameObject.Find("BagCanvas");
+        }
+        if(Sllect == null)
+        {
+            Sllect = GameObject.Find("SelectCanvas");
+        }
+        if (UnWeaponButtons == null)
+        {
+            UnWeaponButtons = GameObject.Find("UnWeaponButtons");
+        }
+    }
     private void OnEnable()
     {
         Bag.SetActive(false);

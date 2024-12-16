@@ -6,4 +6,5 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<Item>itemList=new List<Item>(); 
+    public List<string> nameList = new List<string>();
 }

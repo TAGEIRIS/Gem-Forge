@@ -16,6 +16,11 @@ public class Slot : MonoBehaviour
     //下一件装备应该放的位置
     public int slotIndex;
 
+    private void Awake()
+    {
+        inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
+    }
+
     //更新slot显示
     public void UpdateSlot()
     {

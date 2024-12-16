@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
     public GameObject enemyBoss;
     public List<EnemyBase> enemy_List;//µ–»À¡–±Ì
     public Transform _map;
+    public InventoryManager inventoryManager;
 
 
     private void Awake()
@@ -26,6 +27,9 @@ public class LevelController : MonoBehaviour
 
         _failPanel = GameObject.Find("FailPanel");
         _successPanel = GameObject.Find("SuccessPanel");
+
+        GameObject gameObject = GameObject.Find("InventoryManager");
+        inventoryManager = gameObject.GetComponent<InventoryManager>();
     }
     void Start()
     {
@@ -153,6 +157,7 @@ public class LevelController : MonoBehaviour
 
     IEnumerator Gomenu()
     {
+        inventoryManager.UnReadyForBattle();
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(1);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,21 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<int,GameObject> equippedItems=new 
         Dictionary<int,GameObject>();
 
+    public void Awake()
+    {
+        GameObject gameObject = GameObject.Find("NowWeapon");
+        if (gameObject == null) return;
+
+        // 获取所有子对象的Transform组件
+        Transform[] allTransforms = gameObject.GetComponentsInChildren<Transform>();
+        List<Transform> equipmentPositionsList = new List<Transform>(allTransforms);
+
+        // 移除自身，不添加到数组中
+        equipmentPositionsList.Remove(gameObject.transform);
+
+        // 将List转换回数组
+        equipmentPositions = equipmentPositionsList.ToArray();
+    }
     public void AddSlotToList(Item item)
     {
         if(!Ku.itemList.Contains(item))
@@ -63,6 +79,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     item.itemNumber++;
                     GameObject gameObject=GameObject.Find(item.name);
+                    if (gameObject == null) break;
                     Slot slot=gameObject.GetComponent<Slot>();
                     slot.UpdateSlot();
                     break;
@@ -71,5 +88,35 @@ public class InventoryManager : MonoBehaviour
             Destroy(equippedItems[index]);
             equippedItems.Remove(index);
         }
+    }
+
+    public void UnEquipAll()
+    {
+        UnequipItem(0);
+        UnequipItem(1);
+        UnequipItem(2);
+        UnequipItem(3);
+        equippedItems.Clear();
+    }
+
+    public void ReadyForBattle()
+    {
+        foreach (GameObject gameObject in equippedItems.Values)
+        {
+            if(gameObject!=null)
+            {
+                string s=gameObject.name;
+                s = s.TrimEnd("(Clone)");
+                Ku.nameList.Add(s);
+            }
+        }
+    }
+    public void UnReadyForBattle()
+    {
+        Ku.nameList.Clear();
+    }
+    private void OnDestroy()
+    {
+        UnReadyForBattle();
     }
 }
