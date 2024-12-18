@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
@@ -15,11 +16,21 @@ public class Slot : MonoBehaviour
     public InventoryManager inventoryManager;
     //下一件装备应该放的位置
     public int slotIndex;
+    //物品简介显示文本
+    public Text summaryText;
 
     private void Awake()
     {
         inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
+        
+        GameObject gameObject = GameObject.Find("item Description");
+        summaryText = gameObject.GetComponent<Text>();
     }
+    private void OnEnable()
+    {
+        UpdateSlot();
+    }
+
 
     //更新slot显示
     public void UpdateSlot()
@@ -27,28 +38,20 @@ public class Slot : MonoBehaviour
         //为零则隐藏Slot
         if (slotItem != null && slotItem.itemNumber > 0)
         {
-            slotImage.enabled = true;
             slotNum.text = slotItem.itemNumber.ToString();
             slotNum.enabled = true;
+            slotImage.color = new Color(slotImage.color.r,slotImage.color.g,slotImage.color.b,1f);
         }
         else
         {
-            slotImage.enabled = false;
             slotNum.enabled = false;
+            slotImage.color = new Color(slotImage.color.r, slotImage.color.g, slotImage.color.b, 0.5f);
         }
 
     }
 
-    private void OnEnable()
-    {
-        UpdateSlot();
-    }
 
-    public void OnItemNumChanged()
-    {
-        UpdateSlot();
-    }
-
+    //增加宝石数量
     public void AddSlot()
     {
         if (slotItem.itemNumber < slotItem.itemNumberMax)
@@ -59,6 +62,7 @@ public class Slot : MonoBehaviour
         }
     }
 
+    //减少宝石数量
     public void SubSlot()
     {
         if (slotItem.itemNumber > 0)
@@ -68,6 +72,7 @@ public class Slot : MonoBehaviour
         }
     }
 
+    //装备宝石
     public void Weapon()
     {
         if (slotItem != null && slotItem.itemNumber > 0)
@@ -82,4 +87,21 @@ public class Slot : MonoBehaviour
             }
         }
     }
+
+    //更新简介
+    private void UpdateSummaryText()
+    {
+        if(slotItem!=null)summaryText.text = slotItem.itemInfo;
+    }
+
+    // 当鼠标指针进入游戏对象时调用
+    public void OnMouseEnter()
+    {
+        if (slotItem != null)
+        {
+            // 更新物品简介
+            UpdateSummaryText();
+        }
+    }
+
 }

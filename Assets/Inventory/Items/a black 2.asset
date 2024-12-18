@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1882612141085555730, guid: fbdc95e1833dc2a4da4100e1c634ac50, type: 3}
   itemImage: {fileID: 0}
-  itemNumber: 99
+  itemNumber: 5
   itemNumberMax: 99
-  itemInfo: 
+  itemInfo: "\u7EFF\u5B9D\n\u6700\u57FA\u7840\u7684\u9ED1\u6697\u5B9D\u77F3\u4E4B\u4E00\uFF0C\u62E5\u6709\u8D85\u9AD8\u7684\u5C04\u901F\u4EE5\u53CA\u5C04\u7A0B\n\u4F24\u5BB3
+    2\n\u5C04\u7A0B 12\n\u51B7\u5374 0.2s\n\u4E3B\u52A8\u6280\u80FD \u65E0"

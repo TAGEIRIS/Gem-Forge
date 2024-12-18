@@ -10,6 +10,4 @@ public class Item : ScriptableObject
     public int itemNumber;
     public int itemNumberMax=99;
     [TextArea]public string itemInfo;
-   
-
 }
