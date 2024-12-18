@@ -73,20 +73,26 @@ public class InventoryManager : MonoBehaviour
         {
             string s = equippedItems[index].name;
             s=s.TrimEnd("(Clone)");
-            foreach (Item item in Ku.itemList)
-            {
-                if (item.item.name == s)
-                {
-                    item.itemNumber++;
-                    GameObject gameObject=GameObject.Find(item.name);
-                    if (gameObject == null) break;
-                    Slot slot=gameObject.GetComponent<Slot>();
-                    slot.UpdateSlot();
-                    break;
-                }
-            }
+            AddKuNumber(s);
             Destroy(equippedItems[index]);
             equippedItems.Remove(index);
+        }
+    }
+
+    //增加库中对应物品的数量并更新
+    public void AddKuNumber(string s)
+    {
+        foreach (Item item in Ku.itemList)
+        {
+            if (item.item.name == s)
+            {
+                item.itemNumber++;
+                GameObject gameObject = GameObject.Find(item.name);
+                if (gameObject == null) break;
+                Slot slot = gameObject.GetComponent<Slot>();
+                slot.UpdateSlot();
+                break;
+            }
         }
     }
 

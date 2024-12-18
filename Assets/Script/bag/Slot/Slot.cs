@@ -18,6 +18,10 @@ public class Slot : MonoBehaviour
     public int slotIndex;
     //物品简介显示文本
     public Text summaryText;
+    //合成与分解的按钮物体
+    public GameObject SynthesisButton;
+    public GameObject DecompositionButton;
+
 
     private void Awake()
     {
@@ -25,6 +29,9 @@ public class Slot : MonoBehaviour
         
         GameObject gameObject = GameObject.Find("item Description");
         summaryText = gameObject.GetComponent<Text>();
+
+        SynthesisButton = GameObject.Find("SynthesisButton");
+        DecompositionButton = GameObject.Find("DecompositionButton");
     }
     private void OnEnable()
     {
@@ -92,10 +99,12 @@ public class Slot : MonoBehaviour
     private void UpdateSummaryText()
     {
         if(slotItem!=null)summaryText.text = slotItem.itemInfo;
+        DecompositionButton.SetActive(false);
+        SynthesisButton.SetActive(false);
     }
 
     // 当鼠标指针进入游戏对象时调用
-    public void OnMouseEnter()
+    private void OnMouseEnter()
     {
         if (slotItem != null)
         {
