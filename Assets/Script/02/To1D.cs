@@ -24,9 +24,4 @@ public class To1D : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

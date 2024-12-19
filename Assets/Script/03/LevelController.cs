@@ -19,11 +19,13 @@ public class LevelController : MonoBehaviour
     public List<EnemyBase> enemy_List;//敌人列表
     public Transform _map;
     public InventoryManager inventoryManager;
-
+    public bool isPlay;
 
     private void Awake()
     {
         Instance=this;
+
+        isPlay=true;
 
         _failPanel = GameObject.Find("FailPanel");
         _successPanel = GameObject.Find("SuccessPanel");
@@ -41,6 +43,7 @@ public class LevelController : MonoBehaviour
     }
     public void GenerateEnemy()
     {
+        if (isPlay == false) return;
         StartCoroutine(SwawnEnemy1());
         StartCoroutine(SwawnEnemy2());
         StartCoroutine(SwawnEnemy3());
@@ -132,6 +135,8 @@ public class LevelController : MonoBehaviour
     //游戏胜利
     public void GoodGame()
     {
+        if (isPlay == false) return;
+        isPlay = false;
         _successPanel.GetComponent<CanvasGroup>().alpha = 1;
         StartCoroutine(routine: Gomenu());
 
@@ -145,7 +150,8 @@ public class LevelController : MonoBehaviour
     //游戏失败
     public void BadGame()
     {
-        Debug.Log("badgame");
+        if (isPlay == false) return;
+        isPlay = false;
         _failPanel.GetComponent<CanvasGroup>().alpha = 1;
         StartCoroutine(routine:Gomenu());
 
