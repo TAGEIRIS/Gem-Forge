@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
     {
         isDead = true;
 
-        LevelController.Instance.BadGame();
+        LevelController.Instance.BadGame(3f);
 
     }
 

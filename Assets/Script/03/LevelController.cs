@@ -123,7 +123,7 @@ public class LevelController : MonoBehaviour
             {
                 waveTimer = 0; 
 
-                GoodGame();
+                GoodGame(3f);
             }
 
         }
@@ -133,12 +133,12 @@ public class LevelController : MonoBehaviour
     }
 
     //游戏胜利
-    public void GoodGame()
+    public void GoodGame(float time)
     {
         if (isPlay == false) return;
         isPlay = false;
         _successPanel.GetComponent<CanvasGroup>().alpha = 1;
-        StartCoroutine(routine: Gomenu());
+        StartCoroutine(routine: Gomenu(time));
 
         for (int i = 0; i < enemy_List.Count; i++)
         {
@@ -148,12 +148,12 @@ public class LevelController : MonoBehaviour
     //天完成
 
     //游戏失败
-    public void BadGame()
+    public void BadGame(float time)
     {
         if (isPlay == false) return;
         isPlay = false;
         _failPanel.GetComponent<CanvasGroup>().alpha = 1;
-        StartCoroutine(routine:Gomenu());
+        StartCoroutine(routine:Gomenu(time));
 
         for (int i = 0; i < enemy_List.Count; i++)
         {
@@ -161,10 +161,10 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    IEnumerator Gomenu()
+    IEnumerator Gomenu(float time)
     {
         inventoryManager.UnReadyForBattle();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene(1);
     }
     private void OnDestroy()

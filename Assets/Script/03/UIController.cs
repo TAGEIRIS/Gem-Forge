@@ -47,12 +47,14 @@ public class UIController : MonoBehaviour
         EscUI.SetActive(false);
     }
 
+    //返回关卡选择
     public void Back()
     {
         UnPauseGame() ;
-        levelController.BadGame();
+        levelController.BadGame(1f);
     }
 
+    //退出游戏
     public void ExitGame()
     {
         levelController.inventoryManager.UnReadyForBattle();
