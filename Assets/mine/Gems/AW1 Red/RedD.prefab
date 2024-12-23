@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1124472796060570511}
   - component: {fileID: 1915579943894503266}
   - component: {fileID: 1586289849940725970}
+  - component: {fileID: 2413424593667813997}
   m_Layer: 0
   m_Name: RedD
   m_TagString: Dan8
@@ -96,6 +97,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2413424593667813997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305224475077127618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61604fda16180249923fa456be0aa66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: {x: 0, y: 0}
+  Image: {fileID: 0}
 --- !u!1 &9127437399966691740
 GameObject:
   m_ObjectHideFlags: 0

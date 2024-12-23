@@ -11,9 +11,10 @@ public class LevelController : MonoBehaviour
     public GameObject _failPanel;
     public GameObject _successPanel;
     public KuManager kuManager;
-    
-    public int currenWave = 1;//当前天数
-    public GameObject enemyG;//敌人预制体
+    //当前天数
+    public int currenWave = 1;
+    //敌人预制体
+    public GameObject enemyG;
     public GameObject enemyR;
     public GameObject enemyB;
     public GameObject enemyBoss;
@@ -25,7 +26,6 @@ public class LevelController : MonoBehaviour
     private void Awake()
     {
         Instance=this;
-
         GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
         equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
     }
@@ -52,7 +52,7 @@ public class LevelController : MonoBehaviour
     //随机位置
     private Vector3 GetRandomPosition(Bounds bounds)
     {
-        float safeDistance = 1f;
+        float safeDistance = 0f;
         float randomX = Random.Range(bounds.min.x + safeDistance, bounds.max.x + safeDistance);
         float randomY = Random.Range(bounds.min.y + safeDistance, bounds.max.y + safeDistance);
         float randomZ = 0f;

@@ -16,18 +16,13 @@ public class WeaponBase : MonoBehaviour
     public GameObject Dan;//子弹
     public float DanSpeed;//弹速
 
-    private void Awake()
+    protected void Awake()
     {
-
         originZ = transform.eulerAngles.z;
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         // 自动瞄准
         Aiming();
@@ -52,7 +47,7 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
-    private void Aiming()
+    protected void Aiming()
     {
         Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position
             , Range, LayerMask.GetMask("Enemy"));
@@ -89,10 +84,9 @@ public class WeaponBase : MonoBehaviour
         {
             return;
         }
-
         if(Dan==null)
         {
-            Debug.LogError("No Dan");
+            return;
         }
 
         Dan=Instantiate(Dan,transform.position,transform.rotation);

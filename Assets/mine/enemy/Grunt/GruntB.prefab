@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 8
   damage: 1
-  speed: 5
+  speed: 4.9
   attackTime: 1.5
   attackTimer: 0
   isContact: 0
