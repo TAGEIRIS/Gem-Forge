@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float hp= 15f;
     public bool isDead=false;//是否死亡
     public float maxHp = 15f;//最大生命值
+    public LevelController levelController;
 
 
 
@@ -19,13 +20,12 @@ public class Player : MonoBehaviour
     {
         Instance = this;
         PlayerVisual = GameObject.Find("PlayerVisual").transform;
+
+        GameObject gameObject = GameObject.Find("LevelController");
+        levelController = gameObject.GetComponent<LevelController>();
+        levelController.GameStart();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -93,8 +93,11 @@ public class Player : MonoBehaviour
     {
         isDead = true;
 
-        LevelController.Instance.BadGame(3f);
-
+        if (levelController.isPlay == true)
+        {
+            levelController.isPlay = false;
+            levelController.BadGame(3f);
+        }
     }
 
 

@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public class To1D : MonoBehaviour
 {
     public Button to1DButton;
-    InventoryManager inventoryManager;
-
+    EquipmentManagerInBag equipmentManagerInBag;
     private void Awake()
     {
-        GameObject gameObject = GameObject.Find("InventoryManager");
-        inventoryManager = gameObject.GetComponent<InventoryManager>();
+        GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
+        equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
+
     }
     void Start()
     {
         to1DButton.onClick.AddListener(call: () =>
         {
-            inventoryManager.ReadyForBattle();
-            inventoryManager.UnEquipAll();
+            equipmentManagerInBag.ReadyForBattle();
+            equipmentManagerInBag.UnEquipAll();
             SceneManager.LoadScene("03-GamePlay");
         });
     }

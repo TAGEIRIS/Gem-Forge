@@ -50,14 +50,18 @@ public class UIController : MonoBehaviour
     //返回关卡选择
     public void Back()
     {
-        UnPauseGame() ;
-        levelController.BadGame(1f);
+        UnPauseGame();
+        if (isPaused == false)
+        {
+            levelController.isPlay = false;
+            levelController.BadGame(1f);
+        }
     }
 
     //退出游戏
     public void ExitGame()
     {
-        levelController.inventoryManager.UnReadyForBattle();
+        levelController.equipmentManagerInBag.UnReadyForBattle();
 #if UNITY_EDITOR
         // 如果我们在Unity编辑器中运行，使用这一行代码退出播放模式
         UnityEditor.EditorApplication.isPlaying = false;

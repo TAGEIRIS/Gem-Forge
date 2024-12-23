@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class UnEquip : MonoBehaviour
 {
     public Button Button;
-    public InventoryManager inventoryManager;
+    public EquipmentManagerInBag equipmentManagerInBag;
 
     private void Awake()
     {
-        GameObject gameObject = GameObject.Find("InventoryManager");
-        inventoryManager = gameObject.GetComponent<InventoryManager>();
+        GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
+        equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
     }
 
     public void takeoff(int Number)
     {
-        if(inventoryManager!=null)inventoryManager.UnequipItem(Number);
+        if(equipmentManagerInBag!=null)equipmentManagerInBag.UnequipItem(Number);
     }
 }

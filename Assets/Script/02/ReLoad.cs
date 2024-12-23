@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ReLoad : MonoBehaviour
 {
-    InventoryManager inventoryManager;
+    EquipmentManagerInBag equipmentManagerInBag;
     private void Awake()
     {
-        if(inventoryManager == null)
+        if(equipmentManagerInBag == null)
         {
-            GameObject gameObject = GameObject.Find("InventoryManager");
-            inventoryManager = gameObject.GetComponent<InventoryManager>();
+            GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
+            equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
         }
 
     }
 
     private void OnEnable()
     {
-        if(inventoryManager!=null)inventoryManager.Awake();
+        if(equipmentManagerInBag!=null)equipmentManagerInBag.Awake();
     }
 }

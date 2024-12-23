@@ -13,7 +13,7 @@ public class Slot : MonoBehaviour
     //物品个数
     public Text slotNum;
     //装备管理器
-    public InventoryManager inventoryManager;
+    public EquipmentManagerInBag equipmentManagerInBag;
     //下一件装备应该放的位置
     public int slotIndex;
     //物品简介显示文本
@@ -25,7 +25,7 @@ public class Slot : MonoBehaviour
 
     private void Awake()
     {
-        inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
+        equipmentManagerInBag = GameObject.FindObjectOfType<EquipmentManagerInBag>();
         
         GameObject gameObject = GameObject.Find("item Description");
         summaryText = gameObject.GetComponent<Text>();
@@ -64,7 +64,6 @@ public class Slot : MonoBehaviour
         if (slotItem.itemNumber < slotItem.itemNumberMax)
         {
             slotItem.itemNumber++;
-            inventoryManager.AddSlotToList(slotItem);
             UpdateSlot();
         }
     }
@@ -84,11 +83,11 @@ public class Slot : MonoBehaviour
     {
         if (slotItem != null && slotItem.itemNumber > 0)
         {
-            for (int i = 0; i < inventoryManager.equipmentPositions.Length; i++)
+            for (int i = 0; i < equipmentManagerInBag.equipmentPositions.Length; i++)
             {
-                if(!inventoryManager.equippedItems.ContainsKey(i))
+                if(!equipmentManagerInBag.equippedItems.ContainsKey(i))
                 {
-                    inventoryManager.EquipItem(slotItem,i,this);
+                    equipmentManagerInBag.EquipItem(slotItem,i,this);
                     break;
                 }
             }

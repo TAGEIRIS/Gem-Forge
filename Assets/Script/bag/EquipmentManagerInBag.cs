@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class EquipmentManagerInBag : MonoBehaviour
 {
-    static InventoryManager instance;
+    static EquipmentManagerInBag instance;
     public Inventory Ku;
     public Text itemInformation;
 
@@ -33,15 +33,6 @@ public class InventoryManager : MonoBehaviour
         // 将List转换回数组
         equipmentPositions = equipmentPositionsList.ToArray();
     }
-    public void AddSlotToList(Item item)
-    {
-        if(!Ku.itemList.Contains(item))
-        {
-            Ku.itemList.Add(item);
-            if(item.itemNumber==0)item.itemNumber++;
-        }
-    }
-
 
     public void EquipItem(Item item,int index,Slot slot)
     {

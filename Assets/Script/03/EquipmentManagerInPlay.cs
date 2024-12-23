@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentManager : MonoBehaviour
+public class EquipmentManagerInPlay : MonoBehaviour
 {
     //预设的四个位置
     public Transform[] equipmentPosition;

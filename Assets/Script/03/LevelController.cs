@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public float waveTimer;
     public GameObject _failPanel;
     public GameObject _successPanel;
+    public KuManager kuManager;
     
     public int currenWave = 1;//当前天数
     public GameObject enemyG;//敌人预制体
@@ -18,26 +19,24 @@ public class LevelController : MonoBehaviour
     public GameObject enemyBoss;
     public List<EnemyBase> enemy_List;//敌人列表
     public Transform _map;
-    public InventoryManager inventoryManager;
+    public EquipmentManagerInBag equipmentManagerInBag;
     public bool isPlay;
 
     private void Awake()
     {
         Instance=this;
 
-        isPlay=true;
-
-        _failPanel = GameObject.Find("FailPanel");
-        _successPanel = GameObject.Find("SuccessPanel");
-
-        GameObject gameObject = GameObject.Find("InventoryManager");
-        inventoryManager = gameObject.GetComponent<InventoryManager>();
+        GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
+        equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
     }
-    void Start()
+    public void GameStart()
     {
-        waveTimer = 24;
+        waveTimer = 30;
 
-
+        isPlay = true;
+        if (_map == null) _map = GameObject.Find("map").transform;
+        if (_failPanel == null) _failPanel = GameObject.Find("FailPanel");
+        if (_successPanel == null) _successPanel = GameObject.Find("SuccessPanel");
         //生成敌人
         GenerateEnemy();
     }
@@ -116,14 +115,19 @@ public class LevelController : MonoBehaviour
 
     void Update()
     {
+        if (isPlay == false) return;
         if (waveTimer > 0)
         {
             waveTimer -= Time.deltaTime;
             if(waveTimer <= 0)
             {
-                waveTimer = 0; 
+                waveTimer = 0;
 
-                GoodGame(3f);
+                if (isPlay == true)
+                { 
+                    isPlay = false;
+                    GoodGame(3f); 
+                }
             }
 
         }
@@ -131,45 +135,42 @@ public class LevelController : MonoBehaviour
         GamePanel.instance.RenewCountDown(waveTimer);
 
     }
-
+    //清空怪物
+    public void ClearMonster()
+    {
+        for (int i = 0; i < enemy_List.Count; i++)
+        {
+            if (enemy_List[i]!=null)enemy_List[i].Dead();
+        }
+    }
     //游戏胜利
     public void GoodGame(float time)
     {
-        if (isPlay == false) return;
-        isPlay = false;
         _successPanel.GetComponent<CanvasGroup>().alpha = 1;
+        StopAllCoroutines();
         StartCoroutine(routine: Gomenu(time));
-
-        for (int i = 0; i < enemy_List.Count; i++)
-        {
-            enemy_List[i].Dead();
-        }
+        ClearMonster();
     }
     //天完成
 
     //游戏失败
     public void BadGame(float time)
     {
-        if (isPlay == false) return;
-        isPlay = false;
         _failPanel.GetComponent<CanvasGroup>().alpha = 1;
+        StopAllCoroutines();
         StartCoroutine(routine:Gomenu(time));
-
-        for (int i = 0; i < enemy_List.Count; i++)
-        {
-            enemy_List[i].Dead();
-        }
+        ClearMonster();
     }
 
     IEnumerator Gomenu(float time)
     {
-        inventoryManager.UnReadyForBattle();
+        equipmentManagerInBag.UnReadyForBattle();
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(1);
     }
     private void OnDestroy()
     {
-        inventoryManager.UnReadyForBattle();
+        equipmentManagerInBag.UnReadyForBattle();
     }
 
 }

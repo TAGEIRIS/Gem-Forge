@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 250359141}
   - component: {fileID: 250359142}
   m_Layer: 0
-  m_Name: InventoryManager
+  m_Name: EquipmentManagerInBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,6 +565,56 @@ MonoBehaviour:
   Ku: {fileID: 11400000, guid: 2f49f40e15ee3d94e894d1353db710ba, type: 2}
   itemInformation: {fileID: 0}
   equipmentPositions: []
+--- !u!1 &271977605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271977606}
+  - component: {fileID: 271977607}
+  m_Layer: 0
+  m_Name: KuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &271977606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271977605}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1021439574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &271977607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271977605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc2cf997be3a484d97757c28fb94cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GemsKu: {fileID: 11400000, guid: 2f49f40e15ee3d94e894d1353db710ba, type: 2}
+  AB1: {fileID: 0}
+  AB2: {fileID: 0}
+  AW1: {fileID: 0}
+  AW2: {fileID: 0}
+  BB1: {fileID: 0}
 --- !u!1 &481270234
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +750,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481270234}
   m_CullTransparentMesh: 1
+--- !u!1 &636484844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636484845}
+  - component: {fileID: 636484846}
+  m_Layer: 0
+  m_Name: LevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636484845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636484844}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.188264, y: -0.45994103, z: -4.1724253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1021439574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &636484846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636484844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747e10f164ac15a42a18f8c0fa298e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveTimer: 0
+  _failPanel: {fileID: 0}
+  _successPanel: {fileID: 0}
+  kuManager: {fileID: 271977607}
+  currenWave: 1
+  enemyG: {fileID: 5492328279456071030, guid: 413443416bc86c1408c315ddea1f588b, type: 3}
+  enemyR: {fileID: 7717460405460451610, guid: 98d71d35819900247b8ecb2e9dad84db, type: 3}
+  enemyB: {fileID: 426887594126618079, guid: 6a2170b56a4ae3142b897f7da768b16c, type: 3}
+  enemyBoss: {fileID: 7717460405460451610, guid: 70f06c56e312fde498c38036e77a929c,
+    type: 3}
+  enemy_List: []
+  _map: {fileID: 0}
+  equipmentManagerInBag: {fileID: 0}
+  isPlay: 0
 --- !u!1 &984907014
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1088,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 250359141}
+  - {fileID: 636484845}
+  - {fileID: 271977606}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024352846
