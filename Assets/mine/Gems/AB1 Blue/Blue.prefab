@@ -105,4 +105,4 @@ MonoBehaviour:
   CD: 2
   originZ: 0
   Dan: {fileID: 7334333328373384136, guid: 7097240ae4aa36b40a5a0ab64080bb9c, type: 3}
-  DanSpeed: 2
+  DanSpeed: 3

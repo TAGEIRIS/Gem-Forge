@@ -25,7 +25,7 @@ public class RedDan : MonoBehaviour
     }
     private Vector2 SpeedDown(Vector2 vector2)
     {
-        return new(vector2.x*0.01f,vector2.y*0.01f);
+        return new(vector2.x*0.005f,vector2.y*0.005f);
     }
 
 }

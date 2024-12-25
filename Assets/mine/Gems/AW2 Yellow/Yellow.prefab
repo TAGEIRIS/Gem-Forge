@@ -99,10 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttack: 0
   isCooling: 0
-  Range: 12
+  Range: 15
   AttackTimer: 0
   enemy: {fileID: 0}
-  CD: 1
+  CD: 0.8
   originZ: 0
   Dan: {fileID: 6474357074030303603, guid: 4edf5532276cd9e428dd577753716f3d, type: 3}
-  DanSpeed: 8
+  DanSpeed: 10

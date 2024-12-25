@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 1305224475077127618, guid: 94f1f2d5c7619534ea8c19ce02c67bef,
         type: 3}
       propertyPath: m_Name
-      value: GreenD 1
+      value: GreenD
       objectReference: {fileID: 0}
     - target: {fileID: 1305224475077127618, guid: 94f1f2d5c7619534ea8c19ce02c67bef,
         type: 3}
@@ -162,7 +162,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Dan2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2413424593667813997, guid: 94f1f2d5c7619534ea8c19ce02c67bef, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9127437399966691740, guid: 94f1f2d5c7619534ea8c19ce02c67bef, type: 3}
     m_AddedGameObjects:

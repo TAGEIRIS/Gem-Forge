@@ -43,10 +43,10 @@ public class LevelController : MonoBehaviour
     public void GenerateEnemy()
     {
         if (isPlay == false) return;
-        StartCoroutine(SwawnEnemy1());
-        StartCoroutine(SwawnEnemy2());
-        StartCoroutine(SwawnEnemy3());
-        StartCoroutine(SwawnEnemy4());
+        StartCoroutine(SwawnEnemy(enemyG,0.5f));
+        StartCoroutine(SwawnEnemy(enemyB,1f));
+        StartCoroutine(SwawnEnemy(enemyR,3f));
+        StartCoroutine(SwawnEnemy(enemyB,20f));
     }
 
     //随机位置
@@ -58,56 +58,16 @@ public class LevelController : MonoBehaviour
         float randomZ = 0f;
         return new Vector3(randomX,randomY,randomZ);
     }
-    //产生敌人主体
-    IEnumerator SwawnEnemy1()
+    //产生敌人的协程
+    IEnumerator SwawnEnemy(GameObject En,float CD)
     {
-        while (waveTimer>0&&Player.Instance.hp>0)
+        while (waveTimer > 0 && Player.Instance.hp > 0)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(CD);
 
             var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
 
-            EnemyBase go =Instantiate(enemyG,spawnPoint,Quaternion.identity).GetComponent<EnemyBase>();
-            enemy_List.Add(go);
-
-        }
-    }
-    IEnumerator SwawnEnemy2()
-    {
-        while (waveTimer>0&&Player.Instance.hp>0)
-        {
-            yield return new WaitForSeconds(1f);
-
-            var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
-
-            EnemyBase go =Instantiate(enemyB,spawnPoint,Quaternion.identity).GetComponent<EnemyBase>();
-            enemy_List.Add(go);
-
-        }
-    }
-    IEnumerator SwawnEnemy3()
-    {
-        while (waveTimer>0&&Player.Instance.hp>0)
-        {
-            yield return new WaitForSeconds(3f);
-
-            var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
-
-            EnemyBase go =Instantiate(enemyR,spawnPoint,Quaternion.identity).GetComponent<EnemyBase>();
-            enemy_List.Add(go);
-
-        }
-    }
-    
-    IEnumerator SwawnEnemy4()
-    {
-        while (waveTimer>0&&Player.Instance.hp>0)
-        {
-            yield return new WaitForSeconds(15f);
-
-            var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
-
-            EnemyBase go =Instantiate(enemyBoss,spawnPoint,Quaternion.identity).GetComponent<EnemyBase>();
+            EnemyBase go = Instantiate(En, spawnPoint, Quaternion.identity).GetComponent<EnemyBase>();
             enemy_List.Add(go);
 
         }
