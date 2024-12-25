@@ -797,6 +797,7 @@ MonoBehaviour:
   waveTimer: 0
   _failPanel: {fileID: 0}
   _successPanel: {fileID: 0}
+  GoodEndingPanel: {fileID: 0}
   kuManager: {fileID: 271977607}
   currenWave: 1
   enemyG: {fileID: 5492328279456071030, guid: 413443416bc86c1408c315ddea1f588b, type: 3}

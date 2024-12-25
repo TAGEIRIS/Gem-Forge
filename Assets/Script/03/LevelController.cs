@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public float waveTimer;
     public GameObject _failPanel;
     public GameObject _successPanel;
+    public GameObject GoodEndingPanel;
     public KuManager kuManager;
     //当前天数
     public int currenWave = 1;
@@ -37,17 +38,36 @@ public class LevelController : MonoBehaviour
         if (_map == null) _map = GameObject.Find("map").transform;
         if (_failPanel == null) _failPanel = GameObject.Find("FailPanel");
         if (_successPanel == null) _successPanel = GameObject.Find("SuccessPanel");
+        if (GoodEndingPanel == null) GoodEndingPanel = GameObject.Find("GoodEndingPanel");
         //生成敌人
         GenerateEnemy();
     }
     public void GenerateEnemy()
     {
         if (isPlay == false) return;
-        StartCoroutine(SwawnEnemy(enemyG,0.5f));
-        StartCoroutine(SwawnEnemy(enemyB,1f));
-        StartCoroutine(SwawnEnemy(enemyR,3f));
-        StartCoroutine(SwawnEnemy(enemyB,20f));
+        if (currenWave == 1) D1();
+        else if (currenWave == 2) D2();
+        else if(currenWave == 3) D3();
     }
+
+    //关卡敌人生成
+    public void D1()
+    {
+        StartCoroutine(SwawnEnemy(enemyG, 0.2f));
+    }
+    public void D2()
+    {
+        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyB, 0.5f));
+    }
+    public void D3()
+    {
+        StartCoroutine(SwawnEnemy(enemyG, 0.3f));
+        StartCoroutine(SwawnEnemy(enemyB, 1f));
+        StartCoroutine(SwawnEnemy(enemyR, 1f));
+        StartCoroutine(SwawnEnemy(enemyBoss, 20f));
+    }
+
 
     //随机位置
     private Vector3 GetRandomPosition(Bounds bounds)
@@ -104,29 +124,42 @@ public class LevelController : MonoBehaviour
         }
     }
     //游戏胜利
-    public void GoodGame(float time)
+    public void GoodEnding()
     {
-        _successPanel.GetComponent<CanvasGroup>().alpha = 1;
+        GoodEndingPanel.GetComponent<CanvasGroup>().alpha = 1;
+        currenWave = 1;
         StopAllCoroutines();
-        StartCoroutine(routine: Gomenu(time));
+        kuManager.ReSetKu();
+        StartCoroutine(routine: Gomenu(5f,0));
         ClearMonster();
     }
     //天完成
-
+    public void GoodGame(float time)
+    {
+        currenWave++;
+        if(currenWave>=4)GoodEnding();
+        else
+        {
+            _successPanel.GetComponent<CanvasGroup>().alpha = 1;
+            StopAllCoroutines();
+            StartCoroutine(routine: Gomenu(time,1));
+            ClearMonster();
+        }
+    }
     //游戏失败
     public void BadGame(float time)
     {
         _failPanel.GetComponent<CanvasGroup>().alpha = 1;
         StopAllCoroutines();
-        StartCoroutine(routine:Gomenu(time));
+        StartCoroutine(routine:Gomenu(time,1));
         ClearMonster();
     }
 
-    IEnumerator Gomenu(float time)
+    IEnumerator Gomenu(float time,int num)
     {
         equipmentManagerInBag.UnReadyForBattle();
         yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(num);
     }
     private void OnDestroy()
     {

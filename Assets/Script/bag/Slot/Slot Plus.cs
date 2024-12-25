@@ -7,9 +7,10 @@ public class SlotPlus : Slot
 {
     public Slot slot1;
     public Slot slot2;
-
+    LevelController levelController;
     private void Start()
     {
+        levelController = FindObjectOfType<LevelController>();
         Button Synthesisbutton = SynthesisButton.GetComponent<Button>();
         Button Decompositionbutton = DecompositionButton.GetComponent<Button>();
         Synthesisbutton.onClick.AddListener(call: () =>
@@ -24,6 +25,7 @@ public class SlotPlus : Slot
     private void UpdateSummaryText()
     {
         if (slotItem != null) summaryText.text = slotItem.itemInfo;
+        if (levelController.currenWave <= 3) return;
         if (slot1.slotItem.itemNumber > 0 && slot2.slotItem.itemNumber > 0)
         {
             SynthesisButton.SetActive(true);

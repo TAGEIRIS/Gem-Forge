@@ -7,14 +7,16 @@ using UnityEngine.UI;
 public class GamePanel : MonoBehaviour
 {
     public static GamePanel instance;
-
+    //生命
     public Slider _hpSlider;
     public TMP_Text _hpCount;
     public TMP_Text _countDown;
-    public TMP_Text _waveCount;
+    public Text _waveCount;
     public TMP_Text _killCount;
     public GameObject Enemy;
     public int killnumber;
+    //当前波次
+    public int currentWave;
 
     private void Awake()
     {
@@ -22,7 +24,9 @@ public class GamePanel : MonoBehaviour
         _hpSlider = GameObject.Find("HpSlider").GetComponent<Slider>();
         _hpCount=GameObject.Find("HpCount").GetComponent<TMP_Text>();
         _countDown = GameObject.Find("CountDown").GetComponent<TMP_Text>();
-        _waveCount=GameObject.Find("WaveCount").GetComponent <TMP_Text>();
+        _waveCount=GameObject.Find("WaveCount").GetComponent <Text>();
+        LevelController levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+        currentWave = levelController.currenWave;
     }
     void Start()
     {
@@ -42,13 +46,6 @@ public class GamePanel : MonoBehaviour
         killnumber++;
         _killCount.text = "point : " + killnumber;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void RenewCountDown(float time)
     {
         _countDown.text = time.ToString(format:"F0");
@@ -56,7 +53,7 @@ public class GamePanel : MonoBehaviour
 
     public void RenewWaveCount()
     {
-        _waveCount.text ="第"+ LevelController.Instance.currenWave.ToString()+"天";
+        _waveCount.text ="第"+ currentWave.ToString()+"天";
     }
 
 }

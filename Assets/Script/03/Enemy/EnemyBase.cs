@@ -12,18 +12,6 @@ public class EnemyBase : MonoBehaviour
     public bool isContact = false;//是否接触到玩家
     public bool isCooling = false;//攻击是否冷却中
     public bool isDead=false;//是否死亡
-
-    public void Awake()
-    {
-
-    }
-
-    public void Start()
-    {
-
-    }
-
-
     public void Update()
     {
         Move();//移动
