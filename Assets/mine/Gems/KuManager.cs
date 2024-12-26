@@ -28,10 +28,10 @@ public class KuManager : MonoBehaviour
 
     public void ReSetKu()
     {
-        AB1.itemNumber = 3;
-        AB2.itemNumber = 3;
-        AW1 .itemNumber = 3;
-        AW2.itemNumber = 3;
+        AB1.itemNumber = 4;
+        AB2.itemNumber = 4;
+        AW1 .itemNumber = 4;
+        AW2.itemNumber = 4;
         BB1.itemNumber = 0;
     }
 

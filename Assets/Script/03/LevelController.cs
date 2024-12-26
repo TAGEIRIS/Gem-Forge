@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour
     public GameObject _successPanel;
     public GameObject GoodEndingPanel;
     public KuManager kuManager;
+    public Transform playerTransform;
     //当前天数
     public int currenWave = 1;
     //敌人预制体
@@ -33,12 +34,13 @@ public class LevelController : MonoBehaviour
     public void GameStart()
     {
         waveTimer = 30;
-
         isPlay = true;
         if (_map == null) _map = GameObject.Find("map").transform;
         if (_failPanel == null) _failPanel = GameObject.Find("FailPanel");
         if (_successPanel == null) _successPanel = GameObject.Find("SuccessPanel");
         if (GoodEndingPanel == null) GoodEndingPanel = GameObject.Find("GoodEndingPanel");
+        GameObject gameObject = GameObject.Find("player");
+        playerTransform = gameObject.transform;
         //生成敌人
         GenerateEnemy();
     }
@@ -72,10 +74,13 @@ public class LevelController : MonoBehaviour
     //随机位置
     private Vector3 GetRandomPosition(Bounds bounds)
     {
-        float safeDistance = 0f;
-        float randomX = Random.Range(bounds.min.x + safeDistance, bounds.max.x + safeDistance);
-        float randomY = Random.Range(bounds.min.y + safeDistance, bounds.max.y + safeDistance);
+    restart:
+        float safeDistance = 5f;
+        float randomX = Random.Range(bounds.min.x, bounds.max.x);
+        float randomY = Random.Range(bounds.min.y, bounds.max.y);
         float randomZ = 0f;
+        if (Mathf.Abs(randomX - playerTransform.position.x) < safeDistance) goto restart;
+        if(Mathf.Abs(randomY - playerTransform.position.y) < safeDistance) goto restart;
         return new Vector3(randomX,randomY,randomZ);
     }
     //产生敌人的协程
