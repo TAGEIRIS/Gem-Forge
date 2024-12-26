@@ -102,7 +102,7 @@ MonoBehaviour:
   Range: 3
   AttackTimer: 0
   enemy: {fileID: 0}
-  CD: 0.8
+  CD: 1.2
   originZ: 0
   Dan: {fileID: 1305224475077127618, guid: 94f1f2d5c7619534ea8c19ce02c67bef, type: 3}
   DanSpeed: 20

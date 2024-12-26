@@ -55,18 +55,17 @@ public class LevelController : MonoBehaviour
     //关卡敌人生成
     public void D1()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.2f));
+        StartCoroutine(SwawnEnemy(enemyG, 0.3f));
     }
     public void D2()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyB, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyG, 0.7f));
+        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
     }
     public void D3()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.3f));
-        StartCoroutine(SwawnEnemy(enemyB, 1f));
-        StartCoroutine(SwawnEnemy(enemyR, 1f));
+        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyR, 1.5f));
         StartCoroutine(SwawnEnemy(enemyBoss, 20f));
     }
 
