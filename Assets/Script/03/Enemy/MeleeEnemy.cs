@@ -53,7 +53,7 @@ public class MeleeEnemy:EnemyBase
     }
 
     //½Ó´¥Íæ¼Ò
-    public void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {

@@ -29,6 +29,23 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    //受击检测
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Dan8"))
+        {
+            Injured(8f);
+        }
+        else if (other.CompareTag("Dan4"))
+        {
+            Injured(4f);
+        }
+        else if (other.CompareTag("Dan2"))
+        {
+            Injured(2f);
+        }
+    }
+
     //死亡
     public void Dead()
     {
