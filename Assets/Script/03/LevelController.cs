@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour
     public GameObject enemyG;
     public GameObject enemyR;
     public GameObject enemyB;
+    public GameObject enemyWCG;
     public GameObject enemyBoss;
     public List<EnemyBase> enemy_List;//敌人列表
     public Transform _map;
@@ -55,7 +56,7 @@ public class LevelController : MonoBehaviour
     //关卡敌人生成
     public void D1()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.3f));
+        StartCoroutine(SwawnEnemy(enemyWCG, 1f));
     }
     public void D2()
     {
