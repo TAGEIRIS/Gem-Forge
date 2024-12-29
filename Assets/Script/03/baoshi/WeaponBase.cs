@@ -7,7 +7,7 @@ public class WeaponBase : MonoBehaviour
 {
     public bool isAttack = false;//是否可以攻击，取决于范围内有无敌人
     public bool isCooling = false;//攻击冷却
-    public float Range;
+    public float Range;//射程
 
     public float AttackTimer = 0;//攻击计时器
     public Transform enemy;
@@ -21,7 +21,6 @@ public class WeaponBase : MonoBehaviour
         originZ = transform.eulerAngles.z;
     }
 
-    // Update is called once per frame
     protected void Update()
     {
         // 自动瞄准

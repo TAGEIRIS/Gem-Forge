@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777793029}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -316,7 +316,8 @@ GameObject:
   m_Component:
   - component: {fileID: 329383746}
   - component: {fileID: 329383747}
-  m_Layer: 0
+  - component: {fileID: 329383748}
+  m_Layer: 7
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -357,6 +358,41 @@ MonoBehaviour:
   isDead: 0
   maxHp: 15
   levelController: {fileID: 0}
+--- !u!70 &329383748
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329383745}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.10506982, y: -0.038207293}
+  m_Size: {x: 0.6846678, y: 0.9235854}
+  m_Direction: 0
 --- !u!1 &335870349
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,12 +608,12 @@ PrefabInstance:
     - target: {fileID: 3084677133247781922, guid: 8d5ec218dc8ea4c4f9282d2e51f86cee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0.405
       objectReference: {fileID: 0}
     - target: {fileID: 3084677133247781922, guid: 8d5ec218dc8ea4c4f9282d2e51f86cee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.27
+      value: 0.239
       objectReference: {fileID: 0}
     - target: {fileID: 3084677133247781922, guid: 8d5ec218dc8ea4c4f9282d2e51f86cee,
         type: 3}
@@ -2411,7 +2447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215761870}
   - component: {fileID: 1215761871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeaponPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2616,7 +2652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294419255}
   m_Layer: 0
-  m_Name: AllBaoShi
+  m_Name: All
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8876,7 +8912,7 @@ GameObject:
   - component: {fileID: 2117124176}
   - component: {fileID: 2117124179}
   - component: {fileID: 2117124178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerVisual
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9034,7 +9070,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.39083108, y: 0.41742632}
@@ -9049,7 +9085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5217310635143827330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -9110,7 +9146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6400809827961848515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -9126,7 +9162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7220584309681247335}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

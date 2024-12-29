@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public LevelController levelController;
 
 
-
     private void Awake()
     {
         Instance = this;
@@ -81,13 +80,6 @@ public class Player : MonoBehaviour
         GamePanel.instance.RenewHp();
     }
 
-    //¹¥»÷
-    public void Attack()
-    {
-
-    }
-
-
     //ËÀÍö
     public void Dead()
     {
@@ -100,5 +92,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    //ÊÜµ½µÐ·½µ¯Ä»µÄ¹¥»÷
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemyDan2"))
+        {
+            Injured(2f);
+        }
+    }
 
 }
