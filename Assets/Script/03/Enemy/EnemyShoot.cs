@@ -7,7 +7,6 @@ using static UnityEngine.UI.Image;
 public class EnemyShoot : MonoBehaviour
 {
     public bool isCooling;//是否处于冷却
-    public bool isRange;//玩家是否处于攻击范围
 
     public float AttackCD;//射击CD
     public float AttackTimer;//计时器
@@ -40,7 +39,7 @@ public class EnemyShoot : MonoBehaviour
         }
         else
         {
-            if (isRange)
+            if (RangedEnemy.isInRange==true)
             {
                 Fire();
             }
@@ -53,8 +52,7 @@ public class EnemyShoot : MonoBehaviour
             (transform.position, Range, LayerMask.GetMask("Player"));
         if (playersInRange.Length > 0)
         {
-            isRange = true;
-
+            RangedEnemy.isInRange = true;
             // 找到最近的Player
             Collider2D nearestPlayer = playersInRange.OrderBy(p => Vector2.Distance(transform.position, p.transform.position)).First();
             Player = nearestPlayer.transform;
@@ -67,7 +65,7 @@ public class EnemyShoot : MonoBehaviour
         }
         else
         {
-            isRange = false;
+            RangedEnemy.isInRange = false;
             Player = null;
             // 重置敌人的朝向为原始的Z轴旋转值
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, originZ);
@@ -95,20 +93,5 @@ public class EnemyShoot : MonoBehaviour
         }
 
         isCooling = true;
-    }
-
-    public virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            RangedEnemy.isInRange = true;
-        }
-    }
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            RangedEnemy.isInRange = false;
-        }
     }
 }

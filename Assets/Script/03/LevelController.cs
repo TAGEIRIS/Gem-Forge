@@ -57,6 +57,11 @@ public class LevelController : MonoBehaviour
     public void D1()
     {
         StartCoroutine(SwawnEnemy(enemyWCG, 1f));
+        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
+        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyR, 1.5f));
+        StartCoroutine(SwawnEnemy(enemyBoss, 20f));
+
     }
     public void D2()
     {

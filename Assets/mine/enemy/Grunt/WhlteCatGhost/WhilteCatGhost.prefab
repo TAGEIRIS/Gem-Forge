@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7717297765353651435}
-  - component: {fileID: 8258373159245545068}
   - component: {fileID: 1333236319421205313}
   m_Layer: 6
   m_Name: Shoot
@@ -33,41 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3734479845322446575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8258373159245545068
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4253114334147136486}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
 --- !u!114 &1333236319421205313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCooling: 0
-  isRange: 0
   AttackCD: 2
   AttackTimer: 0
   Speed: 3
@@ -102,6 +65,7 @@ GameObject:
   - component: {fileID: 3346724241330341299}
   - component: {fileID: 1305486703373996607}
   - component: {fileID: 5500577604128926868}
+  - component: {fileID: -4792043982263998235}
   m_Layer: 6
   m_Name: WhilteCatGhost
   m_TagString: Enemy
@@ -206,7 +170,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.010000001, y: -0.050094187}
@@ -232,3 +196,30 @@ MonoBehaviour:
   isCooling: 0
   isDead: 0
   isInRange: 0
+--- !u!50 &-4792043982263998235
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5021026077665693220}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

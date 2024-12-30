@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4613179377669799752}
   - component: {fileID: 2792246206861158723}
   - component: {fileID: 9221851459110467970}
+  - component: {fileID: -8607800809214276437}
   m_Layer: 6
   m_Name: GruntG
   m_TagString: Enemy
@@ -104,9 +105,9 @@ MonoBehaviour:
   speed: 4
   attackTime: 1.5
   attackTimer: 0
-  isContact: 0
   isCooling: 0
   isDead: 0
+  isContact: 0
 --- !u!70 &9221851459110467970
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,9 +137,36 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.010480921, y: -0.17620192}
   m_Size: {x: 0.79956126, y: 0.44454026}
   m_Direction: 1
+--- !u!50 &-8607800809214276437
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492328279456071030}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
