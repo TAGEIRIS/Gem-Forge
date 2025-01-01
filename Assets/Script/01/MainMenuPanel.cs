@@ -10,11 +10,15 @@ public class MainMenuPanel : MonoBehaviour
     private Button SetButton;
     private Button ExitButton;
 
+    public GameObject SettingUI;
+
     private void Awake()
     {
         StartButton =GameObject.Find("StartButton").GetComponent<Button>();
         SetButton=GameObject.Find("SetButton").GetComponent <Button>();
         ExitButton = GameObject.Find("ExitButton").GetComponent<Button>();
+        SettingUI = GameObject.Find("Settings");
+        SettingUI.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -23,6 +27,10 @@ public class MainMenuPanel : MonoBehaviour
         StartButton.onClick.AddListener(call: () =>
         {
             SceneManager.LoadScene("02-SelectPlace");
+        });
+        SetButton.onClick.AddListener(call: () =>
+        {
+            SettingUI.SetActive(true);
         });
     }
 

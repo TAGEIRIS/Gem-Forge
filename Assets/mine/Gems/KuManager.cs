@@ -34,7 +34,10 @@ public class KuManager : MonoBehaviour
         AW2.itemNumber = 4;
         BB1.itemNumber = 0;
     }
-
+    public void AddNumber(string item,int num)
+    {
+        if (item == "BB1") BB1.itemNumber+=num;
+    }
 
 
 

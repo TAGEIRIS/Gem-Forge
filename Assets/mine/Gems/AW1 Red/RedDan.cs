@@ -20,12 +20,12 @@ public class RedDan : MonoBehaviour
     }
     IEnumerator Dead()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         this.transform.position = new Vector3(5000,5000,0);
     }
     private Vector2 SpeedDown(Vector2 vector2)
     {
-        return new(vector2.x*0.005f,vector2.y*0.005f);
+        return new(vector2.x*0.01f,vector2.y*0.01f);
     }
 
 }

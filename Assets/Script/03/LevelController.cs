@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,33 +49,40 @@ public class LevelController : MonoBehaviour
     public void GenerateEnemy()
     {
         if (isPlay == false) return;
+
         if (currenWave == 1) D1();
         else if (currenWave == 2) D2();
-        else if(currenWave == 3) D3();
+        else if (currenWave == 3) D3();
+        else if (currenWave == 4) D4();
+        else if (currenWave == 5) D5();
     }
 
     //关卡敌人生成
     public void D1()
     {
-        StartCoroutine(SwawnEnemy(enemyWCG, 1f));
-        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
-        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyR, 1.5f));
-        StartCoroutine(SwawnEnemy(enemyBoss, 20f));
-
+        StartCoroutine(SwawnEnemy(enemyG, 0.2f));
     }
     public void D2()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.7f));
-        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
+        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyB, 0.6f));
     }
     public void D3()
     {
         StartCoroutine(SwawnEnemy(enemyG, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyR, 1.5f));
-        StartCoroutine(SwawnEnemy(enemyBoss, 20f));
+        StartCoroutine(SwawnEnemy(enemyR, 1f));
     }
-
+    public void D4()
+    {
+        StartCoroutine(SwawnEnemy(enemyR, 0.5f));
+        StartCoroutine(SwawnEnemy(enemyWCG, 0.8f));
+    }
+    public void D5()
+    {
+        StartCoroutine(SwawnEnemy(enemyR, 0.3f));
+        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
+        StartCoroutine(SwawnEnemy(enemyBoss, 16f));
+    }
 
     //随机位置
     private Vector3 GetRandomPosition(Bounds bounds)
@@ -97,9 +105,9 @@ public class LevelController : MonoBehaviour
 
             var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
 
-            EnemyBase go = Instantiate(En, spawnPoint, Quaternion.identity).GetComponent<EnemyBase>();
+            EnemyBase go = Instantiate(En, spawnPoint, Quaternion.identity)
+                .GetComponent<EnemyBase>();
             enemy_List.Add(go);
-
         }
     }
 
@@ -147,7 +155,11 @@ public class LevelController : MonoBehaviour
     public void GoodGame(float time)
     {
         currenWave++;
-        if(currenWave>=4)GoodEnding();
+        if(currenWave == 4)
+        {
+            kuManager.AddNumber("BB1",4);
+        }
+        if(currenWave>=6)GoodEnding();
         else
         {
             _successPanel.GetComponent<CanvasGroup>().alpha = 1;
