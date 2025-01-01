@@ -25,7 +25,12 @@ public class SlotPlus : Slot
     private void UpdateSummaryText()
     {
         if (slotItem != null) summaryText.text = slotItem.itemInfo;
-        if (levelController.currenWave <= 3) return;
+        if (levelController.currenWave <= 3)
+        {
+            SynthesisButton.SetActive(false);
+            DecompositionButton.SetActive(false);
+            return; 
+        }
         if (slot1.slotItem.itemNumber > 0 && slot2.slotItem.itemNumber > 0)
         {
             SynthesisButton.SetActive(true);
