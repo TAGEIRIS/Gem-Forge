@@ -23,6 +23,11 @@ public class KuManager : MonoBehaviour
         AW1 = FindGem(AW1, "AW1");
         AW2 = FindGem(AW2, "AW2");
         BB1 = FindGem(BB1, "BB1");
+
+
+
+
+        ReSetKu();
     }
 
 
