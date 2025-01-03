@@ -21,6 +21,8 @@ public class SlotPlus : Slot
         {
             Decomposition();
         });
+        SynthesisButton.SetActive(false);
+        DecompositionButton.SetActive(false);
     }
     private void UpdateSummaryText()
     {

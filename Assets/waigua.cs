@@ -12,6 +12,6 @@ public class waigua : MonoBehaviour
     }
     public void a()
     {
-        levelController.currenWave = 5;
+        levelController.waveTimer = 0.2f;
     }
 }
