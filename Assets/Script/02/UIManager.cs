@@ -4,42 +4,54 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject Bag;
-    public GameObject Sllect;
+    //面板
+    //1号主界面
+    public GameObject MainCanvas;
+    //2号备战界面
+    public GameObject BagCanvas;
+    //3号工作界面
+    public GameObject WorkbenchCanvas;
+    //4号小镇界面
+    public GameObject TownCanvas;
+
     public GameObject UnWeaponButtons;
 
     private void Awake()
     {
-        if (Bag == null)
+        if (BagCanvas == null)
         {
-            Bag = GameObject.Find("BagCanvas");
+            BagCanvas = GameObject.Find("BagCanvas");
         }
-        if(Sllect == null)
+        if (MainCanvas == null)
         {
-            Sllect = GameObject.Find("SelectCanvas");
+            MainCanvas = GameObject.Find("MainCanvas");
         }
-        if (UnWeaponButtons == null)
+        if (WorkbenchCanvas == null)
         {
-            UnWeaponButtons = GameObject.Find("UnWeaponButtons");
+            WorkbenchCanvas = GameObject.Find("WorkbenchCanvas");
         }
+        if (TownCanvas == null)
+        {
+            TownCanvas = GameObject.Find("TownCanvas");
+        }
+        
     }
     private void OnEnable()
     {
-        Bag.SetActive(false);
-        Sllect.SetActive(true);
-        UnWeaponButtons.SetActive(false);
-    }
-    public void ToBag()
-    {
-        Sllect.SetActive(false);
-        Bag.SetActive(true);
-        UnWeaponButtons.SetActive(true);
+        Transfer(1);
     }
 
-    public void ToSllect()
+    public void Transfer(int num)
     {
-        Bag.SetActive(false);
-        UnWeaponButtons.SetActive(false);
-        Sllect.SetActive(true);
+        MainCanvas.SetActive(false);
+        BagCanvas.SetActive(false);
+        WorkbenchCanvas.SetActive(false);
+        TownCanvas.SetActive(false);
+        if(num==1)MainCanvas.SetActive(true);
+        else if(num==2)BagCanvas.SetActive(true);
+        else if(num==3)WorkbenchCanvas.SetActive(true);
+        else if(num==4)TownCanvas.SetActive(true);
+        Debug.Log(num);
     }
+    
 }

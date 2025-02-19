@@ -4,20 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class To1D : MonoBehaviour
+public class ToPlay : MonoBehaviour
 {
-    public Button to1DButton;
+    public Button ToPlayButton;
     EquipmentManagerInBag equipmentManagerInBag;
     private void Awake()
     {
         GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
         equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
 
+        ToPlayButton = GetComponent<Button>();
+
     }
     void Start()
     {
-        to1DButton.onClick.AddListener(call: () =>
+        ToPlayButton.onClick.AddListener(call: () =>
         {
+            Debug.Log("ToPlay");
             equipmentManagerInBag.ReadyForBattle();
             equipmentManagerInBag.UnEquipAll();
             SceneManager.LoadScene("03-GamePlay");
