@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3cf999b2f976b41a63a2fb3fe99812, type: 3}
   m_Name: AB1
   m_EditorClassIdentifier: 
+  GemName: AB1
   item: {fileID: 3652266553260401869, guid: d49745ee79de2764f87ae007f28e8026, type: 3}
   itemImage: {fileID: 0}
   itemNumber: 4
   itemNumberMax: 99
+  SellingPrice: 5
   itemInfo: "\u84DD\u5B9D\n\u6700\u57FA\u7840\u7684\u9ED1\u6697\u5B9D\u77F3\u4E4B\u4E00\uFF0C\u62E5\u6709\u8F83\u9AD8\u7684\u4F24\u5BB3\u4E0E\u8F83\u5927\u7684\u5F39\u5E55\uFF0C\u4F46\u5C04\u901F\u8F83\u6162\n\u4F24\u5BB3
     8\n\u5C04\u7A0B 12\n\u51B7\u5374 2s\n\u4E3B\u52A8\u6280\u80FD \u65E0"

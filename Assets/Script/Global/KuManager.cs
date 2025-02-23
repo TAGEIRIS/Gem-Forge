@@ -13,8 +13,6 @@ public class KuManager : MonoBehaviour
     public Item AW2;//Yellow
     public Item BB1;//Crystal
 
-    //钱
-    public int Money;
     private void Awake()
     {
         AB1 = FindGem(AB1, "AB1");
@@ -40,11 +38,7 @@ public class KuManager : MonoBehaviour
     //对物品数量的修改
     public void SetNumber(string item, int num)
     {
-        if (item == "Money")
-        {
-            Money = Mathf.Clamp(num, 0, 99999);
-        }
-        else if (item == "BB1")
+        if (item == "BB1")
         {
             BB1.itemNumber = Mathf.Clamp(num, 0, BB1.itemNumberMax);
         }
@@ -67,11 +61,7 @@ public class KuManager : MonoBehaviour
     }
     public void AddNumber(string item, int num)
     {
-        if (item == "Money")
-        {
-            Money += num;
-        }
-        else if (item == "BB1")
+        if (item == "BB1")
         {
             BB1.itemNumber += num;
         }
@@ -95,11 +85,8 @@ public class KuManager : MonoBehaviour
     }
     public void SubtractNumber(string item, int num)
     {
-        if (item == "Money")
-        {
-            Money -= num;
-        }
-        else if (item == "BB1")
+
+        if (item == "BB1")
         {
             BB1.itemNumber -= num;
         }
@@ -121,9 +108,13 @@ public class KuManager : MonoBehaviour
         }
         ValidateItemNumbers();
     }
+
+    public void Selling(string item, int num)
+    {
+
+    }
     private void ValidateItemNumbers()
     {
-        Money = Mathf.Clamp(Money, 0, 99999);
         BB1.itemNumber = Mathf.Clamp(BB1.itemNumber, 0, BB1.itemNumberMax);
         AB1.itemNumber = Mathf.Clamp(AB1.itemNumber, 0, AB1.itemNumberMax);
         AB2.itemNumber = Mathf.Clamp(AB2.itemNumber, 0, AB2.itemNumberMax);

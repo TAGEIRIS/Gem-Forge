@@ -18,9 +18,10 @@ public class Slot : MonoBehaviour
     public int slotIndex;
     //物品简介显示文本
     public Text summaryText;
+    //价格显示文本
+    public Text sellingNumber;
     //合成与分解的按钮物体
-    public GameObject SynthesisButton;
-    public GameObject DecompositionButton;
+    public GameObject sellingButton;
 
 
     private void Awake()
@@ -30,9 +31,11 @@ public class Slot : MonoBehaviour
         GameObject gameObject = GameObject.Find("item Description");
         summaryText = gameObject.GetComponent<Text>();
 
-        SynthesisButton = GameObject.Find("SynthesisButton");
-        DecompositionButton = GameObject.Find("DecompositionButton");
+        sellingButton = GameObject.Find("SellingButton");
+        GameObject gameObject1 = GameObject.Find("SellingNumber");
+        sellingNumber = gameObject1.GetComponent<Text>();
     }
+
     private void OnEnable()
     {
         UpdateSlot();
@@ -78,6 +81,8 @@ public class Slot : MonoBehaviour
         }
     }
 
+    //出售
+
     //装备宝石
     public void Weapon()
     {
@@ -94,12 +99,14 @@ public class Slot : MonoBehaviour
         }
     }
 
-    //更新简介
-    private void UpdateSummaryText()
+    //更新文本
+    private void UpdateText()
     {
         if(slotItem!=null)summaryText.text = slotItem.itemInfo;
-        DecompositionButton.SetActive(false);
-        SynthesisButton.SetActive(false);
+        string s = slotItem.SellingPrice.ToString();
+        s += "金币";
+        sellingNumber.text = s;
+
     }
 
     // 当鼠标指针进入游戏对象时调用
@@ -107,8 +114,8 @@ public class Slot : MonoBehaviour
     {
         if (slotItem != null)
         {
-            // 更新物品简介
-            UpdateSummaryText();
+            // 更新物品文本信息
+            UpdateText();
         }
     }
 

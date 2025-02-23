@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -155,10 +156,6 @@ public class LevelController : MonoBehaviour
     public void GoodGame(float time)
     {
         currenWave++;
-        if(currenWave == 4)
-        {
-            kuManager.AddNumber("BB1",4);
-        }
         if(currenWave>=6)GoodEnding();
         else
         {
@@ -188,4 +185,12 @@ public class LevelController : MonoBehaviour
         equipmentManagerInBag.UnReadyForBattle();
     }
 
+    //前往下一关
+    public void NextLevel()
+    {
+        Debug.Log("ToPlay");
+        equipmentManagerInBag.ReadyForBattle();
+        equipmentManagerInBag.UnEquipAll();
+        SceneManager.LoadScene("03-GamePlay");
+    }
 }
