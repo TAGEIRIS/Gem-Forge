@@ -14,14 +14,14 @@ public class Slot : MonoBehaviour
     public Text slotNum;
     //装备管理器
     public EquipmentManagerInBag equipmentManagerInBag;
+    //金钱管理器（交易）
+    public MoneyManager moneyManager;
     //下一件装备应该放的位置
     public int slotIndex;
     //物品简介显示文本
     public Text summaryText;
     //价格显示文本
     public Text sellingNumber;
-    //合成与分解的按钮物体
-    public GameObject sellingButton;
 
 
     private void Awake()
@@ -31,14 +31,21 @@ public class Slot : MonoBehaviour
         GameObject gameObject = GameObject.Find("item Description");
         summaryText = gameObject.GetComponent<Text>();
 
-        sellingButton = GameObject.Find("SellingButton");
         GameObject gameObject1 = GameObject.Find("SellingNumber");
         sellingNumber = gameObject1.GetComponent<Text>();
+
+        gameObject1 = GameObject.Find("MoneyManager");
+        moneyManager = gameObject1.GetComponent<MoneyManager>();
+    }
+
+    private void Start()
+    {
     }
 
     private void OnEnable()
     {
         UpdateSlot();
+
     }
 
 
@@ -55,7 +62,7 @@ public class Slot : MonoBehaviour
         else
         {
             slotNum.enabled = false;
-            slotImage.color = new Color(slotImage.color.r, slotImage.color.g, slotImage.color.b, 0.5f);
+            slotImage.color = new Color(slotImage.color.r, slotImage.color.g, slotImage.color.b, 0.3f);
         }
 
     }
@@ -81,8 +88,6 @@ public class Slot : MonoBehaviour
         }
     }
 
-    //出售
-
     //装备宝石
     public void Weapon()
     {
@@ -99,14 +104,14 @@ public class Slot : MonoBehaviour
         }
     }
 
-    //更新文本
-    private void UpdateText()
+    //更新文本和选中物品
+    private void UpdateSelectedItem()
     {
         if(slotItem!=null)summaryText.text = slotItem.itemInfo;
         string s = slotItem.SellingPrice.ToString();
         s += "金币";
         sellingNumber.text = s;
-
+        moneyManager.slot=this;
     }
 
     // 当鼠标指针进入游戏对象时调用
@@ -115,7 +120,7 @@ public class Slot : MonoBehaviour
         if (slotItem != null)
         {
             // 更新物品文本信息
-            UpdateText();
+            UpdateSelectedItem();        
         }
     }
 

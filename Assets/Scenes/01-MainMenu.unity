@@ -964,6 +964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GemsKu: {fileID: 11400000, guid: 2f49f40e15ee3d94e894d1353db710ba, type: 2}
+  AB1: {fileID: 0}
+  AB2: {fileID: 0}
+  AW1: {fileID: 0}
+  AW2: {fileID: 0}
+  BB1: {fileID: 0}
 --- !u!1 &331930036
 GameObject:
   m_ObjectHideFlags: 0

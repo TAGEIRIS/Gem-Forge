@@ -33,6 +33,8 @@ public class KuManager : MonoBehaviour
         AW1.itemNumber = 4;
         AW2.itemNumber = 4;
         BB1.itemNumber = 0;
+        
+        GemsKu.MoneyNumber = 0;
     }
 
     //对物品数量的修改
@@ -109,10 +111,6 @@ public class KuManager : MonoBehaviour
         ValidateItemNumbers();
     }
 
-    public void Selling(string item, int num)
-    {
-
-    }
     private void ValidateItemNumbers()
     {
         BB1.itemNumber = Mathf.Clamp(BB1.itemNumber, 0, BB1.itemNumberMax);
