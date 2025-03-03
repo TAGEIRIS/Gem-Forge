@@ -12,6 +12,7 @@ public class KuManager : MonoBehaviour
     public Item AW1;//Red
     public Item AW2;//Yellow
     public Item BB1;//Crystal
+    
 
     private void Awake()
     {
