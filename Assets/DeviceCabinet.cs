@@ -5,15 +5,26 @@ using UnityEngine.UIElements;
 
 public class DeviceCabinet : MonoBehaviour
 {
-    public List<Vector3> Positions = new List<Vector3>
-    { new Vector3(-667,238,0),
-        new Vector3(-223,238,0),
-        new Vector3(224,238,0),
-        new Vector3(668,238,0),
-        new Vector3(-667,-241,0),
-        new Vector3(-223,-241,0),
-        new Vector3(224,-241,0),
-        new Vector3(668,-241,0)
-    };
+    public Transform[] devicesPositions;
+    public DeviceKu deviceKu;
+    private void Awake()
+    {
+        GameObject gameObject = GameObject.Find("DevicesPosition");
+        if (gameObject == null) return;
 
+        // 获取所有子对象的Transform组件
+        Transform[] allTransforms = gameObject.GetComponentsInChildren<Transform>();
+        List<Transform> devicePositionList = new List<Transform>(allTransforms);
+
+        // 移除自身，不添加到数组中
+        devicePositionList.Remove(gameObject.transform);
+
+        // 将List转换回数组
+        devicesPositions = devicePositionList.ToArray();
+    }
+
+    private void Start()
+    {
+        
+    }
 }

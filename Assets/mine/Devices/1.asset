@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IndexNumber: 1
   Namefordesigner: "\u4E00\u84DD\u4E00\u7EFF\u5408\u6C34\u6676"
+  Body: {fileID: 4692828560646106308, guid: deb88b907349c2e48b897a9e63b0e35e, type: 3}
   Gem1name: AB1
   Gem1number: 1
   Gem2name: AB2

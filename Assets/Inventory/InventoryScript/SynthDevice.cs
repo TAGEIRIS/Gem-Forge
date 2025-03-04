@@ -7,6 +7,8 @@ public class SynthDevice : ScriptableObject
 {
     public int IndexNumber;
     public string Namefordesigner;
+    //装置本体
+    public GameObject Body;
 
     //至多三个原料
     public string Gem1name;
