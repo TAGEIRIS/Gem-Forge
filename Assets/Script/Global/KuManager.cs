@@ -68,8 +68,8 @@ public class KuManager : MonoBehaviour
         }
     }
 
-    // 初始化找到宝石item
-    private Item FindGem(string gemName)
+    // 通过string获取宝石item
+    public Item FindGem(string gemName)
     {
         foreach (var item in GemsKu.itemList)
         {
@@ -81,4 +81,5 @@ public class KuManager : MonoBehaviour
         Debug.LogError($"Gem not found: {gemName}");
         return null;
     }
+
 }

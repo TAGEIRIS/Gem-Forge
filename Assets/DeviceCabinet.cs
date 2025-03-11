@@ -46,12 +46,16 @@ public class DeviceCabinet : MonoBehaviour
 
         foreach(SynthDevice device in deviceKu.OwnDevices) 
         {
-            EquipDevice(device, num++);
+            Debug.Log(num);
+            EquipDevice(device, num);
+            num++;
+            if (num > 4) break;
         }
     }
     public void EquipDevice(SynthDevice synthDevice, int index)
     {
-        if (synthDevice != null && index >= 0 && index < devicesPositions.Length)
+        if (synthDevice != null
+            && index >= 0 && index < devicesPositions.Length)
         {
             //实例化装置，并放置到预设位置
             GameObject device = Instantiate(synthDevice.Body,
@@ -60,6 +64,7 @@ public class DeviceCabinet : MonoBehaviour
             device.transform.localScale = new Vector3(1, 1, 1);
             //将装置与位置关联
             equippedDevice[index] = device;
+            Debug.LogError(index);
         }
     }
 

@@ -9,21 +9,4 @@ public class SynthDevice : ScriptableObject
     public string Namefordesigner;
     //装置本体
     public GameObject Body;
-
-    //至多三个原料
-    public string Gem1name;
-    public int Gem1number;
-    public string Gem2name;
-    public string Gem2number;
-    public string Gem3name;
-    public string Gem3number;
-
-    //至多2个产品
-    public string Product1;
-    public int Product1Number;
-    public string Product2name;
-    public int Product2number;
-
-    //制作周期
-    public int time;
 }

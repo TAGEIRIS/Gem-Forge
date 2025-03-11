@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 630294388726168370}
   - component: {fileID: 4400210200020707219}
   m_Layer: 5
-  m_Name: Device
+  m_Name: Device 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,14 +686,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b533ee1e5a85545ba2114e48466c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RM1name: 
-  RM1num: 0
-  RM2name: 
-  RM2num: 0
+  RM1name: AB1
+  RM1num: 1
+  RM2name: AB2
+  RM2num: 1
   RM3name: 
   RM3num: 0
-  Product1name: 
-  Product1Num: 0
+  Product1name: BB1
+  Product1Num: 1
   Product2name: 
   Product2num: 0
   time: 0
