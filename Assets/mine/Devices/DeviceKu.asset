@@ -14,4 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DevicesPool:
   - {fileID: 11400000, guid: 6030c58a72b1b1d418beeed332d4f7de, type: 2}
-  OwnDevices: []
+  - {fileID: 11400000, guid: ba970351fada0c345b2db3930c96ebec, type: 2}
+  - {fileID: 11400000, guid: 68c9c3497f0e1d24dbc6204baf22666d, type: 2}
+  - {fileID: 11400000, guid: 87801acb775abb64084d25ca96e82daf, type: 2}
+  - {fileID: 11400000, guid: 9ff5c34ab27c52f47b2b39df4e9c970a, type: 2}
+  OwnDevices:
+  - {fileID: 11400000, guid: 6030c58a72b1b1d418beeed332d4f7de, type: 2}
+  - {fileID: 11400000, guid: ba970351fada0c345b2db3930c96ebec, type: 2}
+  - {fileID: 11400000, guid: 68c9c3497f0e1d24dbc6204baf22666d, type: 2}
+  - {fileID: 11400000, guid: 87801acb775abb64084d25ca96e82daf, type: 2}
+  - {fileID: 11400000, guid: 9ff5c34ab27c52f47b2b39df4e9c970a, type: 2}

@@ -41,7 +41,7 @@ public class EquipmentManagerInBag : MonoBehaviour
             //检查是否已有装备
             if(!equippedItems.ContainsKey(index))
             {
-                UnequipItem(index);
+                UnequipItem(index); 
             }
 
             //实例化装备，并放置到预设位置

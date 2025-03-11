@@ -4,134 +4,81 @@ using UnityEngine;
 
 public class KuManager : MonoBehaviour
 {
-    //宝石库
+    // 宝石库
     public Inventory GemsKu;
-    //所有宝石
-    public Item AB1;//Blue
-    public Item AB2;//Green
-    public Item AW1;//Red
-    public Item AW2;//Yellow
-    public Item BB1;//Crystal
-    
+
+    // 字典用于存储宝石的引用
+    private Dictionary<string, Item> gemDictionary = new Dictionary<string, Item>();
 
     private void Awake()
     {
-        AB1 = FindGem(AB1, "AB1");
-        AB2 = FindGem(AB2, "AB2");
-        AW1 = FindGem(AW1, "AW1");
-        AW2 = FindGem(AW2, "AW2");
-        BB1 = FindGem(BB1, "BB1");
-
-
-
+        // 初始化字典
+        gemDictionary["AB1"] = FindGem("AB1");
+        gemDictionary["AB2"] = FindGem("AB2");
+        gemDictionary["AW1"] = FindGem("AW1");
+        gemDictionary["AW2"] = FindGem("AW2");
+        gemDictionary["BB1"] = FindGem("BB1");
 
         ReSetKu();
     }
+
     public void ReSetKu()
     {
-        AB1.itemNumber = 4;
-        AB2.itemNumber = 4;
-        AW1.itemNumber = 4;
-        AW2.itemNumber = 4;
-        BB1.itemNumber = 0;
-        
+        gemDictionary["AB1"].itemNumber = 4;
+        gemDictionary["AB2"].itemNumber = 4;
+        gemDictionary["AW1"].itemNumber = 4;
+        gemDictionary["AW2"].itemNumber = 4;
+        gemDictionary["BB1"].itemNumber = 0;
+
         GemsKu.MoneyNumber = 0;
     }
 
-    //对物品数量的修改
-    public void SetNumber(string item, int num)
+    // 对物品数量的修改
+    public void SetNumber(string itemKey, int num)
     {
-        if (item == "BB1")
+        if (gemDictionary.ContainsKey(itemKey))
         {
-            BB1.itemNumber = Mathf.Clamp(num, 0, BB1.itemNumberMax);
+            gemDictionary[itemKey].itemNumber = Mathf.Clamp(num, 0, gemDictionary[itemKey].itemNumberMax);
         }
-        else if (item == "AB1")
-        {
-            AB1.itemNumber = Mathf.Clamp(num, 0, AB1.itemNumberMax);
-        }
-        else if (item == "AB2")
-        {
-            AB2.itemNumber = Mathf.Clamp(num, 0, AB2.itemNumberMax);
-        }
-        else if (item == "AW1")
-        {
-            AW1.itemNumber = Mathf.Clamp(num, 0, AW1.itemNumberMax);
-        }
-        else if (item == "AW2")
-        {
-            AW2.itemNumber = Mathf.Clamp(num, 0, AW2.itemNumberMax);
-        }
-    }
-    public void AddNumber(string item, int num)
-    {
-        if (item == "BB1")
-        {
-            BB1.itemNumber += num;
-        }
-        else if (item == "AB1")
-        {
-            AB1.itemNumber += num;
-        }
-        else if (item == "AB2")
-        {
-            AB2.itemNumber += num;
-        }
-        else if (item == "AW1")
-        {
-            AW1.itemNumber += num;
-        }
-        else if (item == "AW2")
-        {
-            AW2.itemNumber += num;
-        }
-        ValidateItemNumbers();
-    }
-    public void SubtractNumber(string item, int num)
-    {
-
-        if (item == "BB1")
-        {
-            BB1.itemNumber -= num;
-        }
-        else if (item == "AB1")
-        {
-            AB1.itemNumber -= num;
-        }
-        else if (item == "AB2")
-        {
-            AB2.itemNumber -= num;
-        }
-        else if (item == "AW1")
-        {
-            AW1.itemNumber -= num;
-        }
-        else if (item == "AW2")
-        {
-            AW2.itemNumber -= num;
-        }
-        ValidateItemNumbers();
     }
 
-    private void ValidateItemNumbers()
+    public void AddNumber(string itemKey, int num)
     {
-        BB1.itemNumber = Mathf.Clamp(BB1.itemNumber, 0, BB1.itemNumberMax);
-        AB1.itemNumber = Mathf.Clamp(AB1.itemNumber, 0, AB1.itemNumberMax);
-        AB2.itemNumber = Mathf.Clamp(AB2.itemNumber, 0, AB2.itemNumberMax);
-        AW1.itemNumber = Mathf.Clamp(AW1.itemNumber, 0, AW1.itemNumberMax);
-        AW2.itemNumber = Mathf.Clamp(AW2.itemNumber, 0, AW2.itemNumberMax);
+        if (gemDictionary.ContainsKey(itemKey))
+        {
+            gemDictionary[itemKey].itemNumber += num;
+            ValidateItemNumbers(itemKey);
+        }
     }
 
-    //初始化找到宝石item
-    private Item FindGem(Item item, string s)
+    public void SubtractNumber(string itemKey, int num)
     {
-        foreach (var itema in GemsKu.itemList)
+        if (gemDictionary.ContainsKey(itemKey))
         {
-            if (itema.name == s)
+            gemDictionary[itemKey].itemNumber -= num;
+            ValidateItemNumbers(itemKey);
+        }
+    }
+
+    private void ValidateItemNumbers(string itemKey)
+    {
+        if (gemDictionary.ContainsKey(itemKey))
+        {
+            gemDictionary[itemKey].itemNumber = Mathf.Clamp(gemDictionary[itemKey].itemNumber, 0, gemDictionary[itemKey].itemNumberMax);
+        }
+    }
+
+    // 初始化找到宝石item
+    private Item FindGem(string gemName)
+    {
+        foreach (var item in GemsKu.itemList)
+        {
+            if (item.name == gemName)
             {
-                return itema;
+                return item;
             }
         }
-        Debug.Log("Fuck");
+        Debug.LogError($"Gem not found: {gemName}");
         return null;
     }
 }
