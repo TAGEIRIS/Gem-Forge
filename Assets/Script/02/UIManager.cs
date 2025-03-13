@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         else if(num==2)BagCanvas.SetActive(true);
         else if(num==3)WorkbenchCanvas.SetActive(true);
         else if(num==4)TownCanvas.SetActive(true);
-        Debug.Log(num);
+        Debug.Log("³¡¾°"+num);
     }
     
 }

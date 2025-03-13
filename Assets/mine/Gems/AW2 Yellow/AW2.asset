@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GemName: AW2
   item: {fileID: 6214156947021828485, guid: 2afc57de7bd4b804a9d296faac922c6b, type: 3}
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: ff4e2a40a0a91494a873149252b1aaaf, type: 3}
   itemNumber: 4
   itemNumberMax: 99
   SellingPrice: 5

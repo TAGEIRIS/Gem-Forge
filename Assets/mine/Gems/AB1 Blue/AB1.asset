@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GemName: AB1
   item: {fileID: 3652266553260401869, guid: d49745ee79de2764f87ae007f28e8026, type: 3}
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 3c9805506cdde8f44889fc034ab0097e, type: 3}
   itemNumber: 4
   itemNumberMax: 99
   SellingPrice: 5

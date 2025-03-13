@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 8505904128686472053}
   - component: {fileID: 3604487877718392620}
   m_Layer: 5
-  m_Name: FP2Text
+  m_Name: Product2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 774612555710010565}
   - component: {fileID: 5331468278242667953}
   m_Layer: 5
-  m_Name: FP2Image
+  m_Name: Product2Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 5017877558367216151}
   - component: {fileID: 8302130052559613349}
   - component: {fileID: 630294388726168370}
-  - component: {fileID: 4400210200020707219}
+  - component: {fileID: -8280752725323844}
   m_Layer: 5
   m_Name: Device 1
   m_TagString: Untagged
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4400210200020707219
+--- !u!114 &-8280752725323844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -696,7 +696,7 @@ MonoBehaviour:
   Product1Num: 1
   Product2name: 
   Product2num: 0
-  time: 0
+  time: 1
   kuManager: {fileID: 0}
   RM1image: {fileID: 0}
   RM1text: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 4822806039716608148}
   - component: {fileID: 8503430062934708785}
   m_Layer: 5
-  m_Name: FP1Image
+  m_Name: Product1Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 6296703379682277080}
   - component: {fileID: 2632091729019591202}
   m_Layer: 5
-  m_Name: FP1Text
+  m_Name: Product1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

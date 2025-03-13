@@ -46,7 +46,6 @@ public class DeviceCabinet : MonoBehaviour
 
         foreach(SynthDevice device in deviceKu.OwnDevices) 
         {
-            Debug.Log(num);
             EquipDevice(device, num);
             num++;
             if (num > 4) break;
@@ -58,13 +57,11 @@ public class DeviceCabinet : MonoBehaviour
             && index >= 0 && index < devicesPositions.Length)
         {
             //实例化装置，并放置到预设位置
-            GameObject device = Instantiate(synthDevice.Body,
-                new Vector3(0, 0, 0), devicesPositions[index].rotation);
+            GameObject device = Instantiate(synthDevice.Body,new Vector3(0, 0, 0), devicesPositions[index].rotation);
             device.transform.SetParent(devicesPositions[index], false);
             device.transform.localScale = new Vector3(1, 1, 1);
             //将装置与位置关联
             equippedDevice[index] = device;
-            Debug.LogError(index);
         }
     }
 
