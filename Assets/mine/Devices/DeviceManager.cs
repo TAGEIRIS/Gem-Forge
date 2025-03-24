@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DeviceCabinet : MonoBehaviour
+public class DeviceManager : MonoBehaviour
 {
     //位置的数组
     public Transform[] devicesPositions;
@@ -39,6 +39,7 @@ public class DeviceCabinet : MonoBehaviour
         UpdateCabnet();
     }
 
+    //更新展示面板
     public void UpdateCabnet()
     {
         if (deviceKu.OwnDevices.Count == 0) return;
@@ -51,6 +52,8 @@ public class DeviceCabinet : MonoBehaviour
             if (num > 4) break;
         }
     }
+
+    //将device放置到面板上
     public void EquipDevice(SynthDevice synthDevice, int index)
     {
         if (synthDevice != null
@@ -63,6 +66,33 @@ public class DeviceCabinet : MonoBehaviour
             //将装置与位置关联
             equippedDevice[index] = device;
         }
+    }
+
+    //
+    //device管理
+
+    //deviceku的重置
+    public void Reset()
+    {
+        deviceKu.OwnDevices.Clear();
+    }
+
+    //device的添加
+    public bool AddDevice(int deviceID)
+    {
+        foreach (SynthDevice aim in deviceKu.DevicesPool)
+        {
+            if (aim.IndexNumber == deviceID)
+            {
+                foreach (SynthDevice aim1 in deviceKu.OwnDevices)
+                {
+                    if (aim1.IndexNumber == deviceID) return false;
+                }
+                deviceKu.OwnDevices.Add(aim);
+                return true;
+            }
+        }
+        return false;
     }
 
 }

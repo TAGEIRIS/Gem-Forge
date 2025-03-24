@@ -8,6 +8,7 @@ public class DeviceKu : ScriptableObject
 {
     //装置池
     public List<SynthDevice>DevicesPool = new List<SynthDevice>();
+
     //当前拥有的装置
     public List<SynthDevice>OwnDevices = new List<SynthDevice>();
 }

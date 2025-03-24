@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         if (levelController.isPlay == true)
         {
             levelController.isPlay = false;
-            levelController.BadGame(3f);
+            levelController.LevelOver(3f,true);
         }
     }
 

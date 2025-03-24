@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
         {
             TownCanvas = GameObject.Find("TownCanvas");
         }
+    }
+
+    private void Start()
+    {
         Transfer(1);
     }
 

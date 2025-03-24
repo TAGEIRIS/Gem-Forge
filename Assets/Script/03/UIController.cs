@@ -54,7 +54,7 @@ public class UIController : MonoBehaviour
         if (isPaused == false)
         {
             levelController.isPlay = false;
-            levelController.BadGame(1f);
+            levelController.LevelOver(1f,true);
         }
     }
 

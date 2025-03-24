@@ -59,6 +59,14 @@ public class KuManager : MonoBehaviour
             ValidateItemNumbers(itemKey);
         }
     }
+    public int GetItemNumber(string itemKey)
+    {
+        if (gemDictionary.ContainsKey(itemKey))
+        {
+            return gemDictionary[itemKey].itemNumber;
+        }
+        return 0;
+    }
 
     private void ValidateItemNumbers(string itemKey)
     {

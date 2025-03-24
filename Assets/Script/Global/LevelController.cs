@@ -125,7 +125,7 @@ public class LevelController : MonoBehaviour
                 if (isPlay == true)
                 { 
                     isPlay = false;
-                    GoodGame(3f); 
+                    LevelOver(3f,true); 
                 }
             }
 
@@ -152,10 +152,10 @@ public class LevelController : MonoBehaviour
         StartCoroutine(routine: Gomenu(5f,0));
         ClearMonster();
     }
-    //天完成
-    public void GoodGame(float time)
+    //天完成(next代表是否变天)
+    public void LevelOver(float time, bool next)
     {
-        currenWave++;
+        if(next==true)currenWave++;
         if(currenWave>=6)GoodEnding();
         else
         {
@@ -165,13 +165,11 @@ public class LevelController : MonoBehaviour
             ClearMonster();
         }
     }
-    //游戏失败
-    public void BadGame(float time)
+
+    //游戏失败(毁档)
+    public void BadGame()
     {
-        _failPanel.GetComponent<CanvasGroup>().alpha = 1;
-        StopAllCoroutines();
-        StartCoroutine(routine:Gomenu(time,1));
-        ClearMonster();
+
     }
 
     IEnumerator Gomenu(float time,int num)
