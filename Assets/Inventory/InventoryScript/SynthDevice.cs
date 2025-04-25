@@ -13,6 +13,6 @@ public class SynthDevice : ScriptableObject
     public GameObject Body;
 
     //装置的状态
-    //装置还需运作几天(每过一天天数减一，0代表未运作)
+    //装置还需运作几天(每过一天天数减一，-1代表未运作)
     public int Operationtime;
 }

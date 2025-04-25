@@ -900,7 +900,7 @@ MonoBehaviour:
   Product1num: 1
   Product2name: 
   Product2num: 0
-  time: 1
+  time: 2
   kuManager: {fileID: 0}
   levelController: {fileID: 0}
   recordedWave: 1

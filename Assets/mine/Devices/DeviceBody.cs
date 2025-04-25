@@ -42,7 +42,7 @@ public class DeviceBody : MonoBehaviour
     private Text Product2text;
     private Text CostTime;  
 
-    //执行按钮及剩余运作时间(0代表未运作)
+    //执行按钮及剩余运作时间(-1代表未运作)
     private GameObject ProduceButtonBody;
     private Button Producebutton;
     public int Operationtime;
@@ -52,8 +52,7 @@ public class DeviceBody : MonoBehaviour
     {
         // 获取 KuManager 和Levelcontroler组件
         kuManager = GameObject.Find("KuManager").GetComponent<KuManager>();
-        levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
-        
+        levelController = LevelController.Instance;
 
         Operating = GameObject.Find("Operating").GetComponent<Text>();
 
@@ -65,12 +64,23 @@ public class DeviceBody : MonoBehaviour
             OperateDevice();
         });
 
+    }
+
+    private void Start()
+    {
+        string s = DeviceNumber + "记录天数";
+        recordedWave = PlayerPrefs.GetInt(s, -1);
+        Debug.Log(s + recordedWave);
+
+        s = DeviceNumber + "剩余时间";
+        Operationtime = PlayerPrefs.GetInt(s, 0);
+        Debug.Log(s + Operationtime);
+
         // 初始化原料和产品的 UI 组件
         InitializeUIComponents();
         //更新当前时间
         UpdateOperationStatus();
     }
-
     //初始化UI面板
     private void InitializeUIComponents()
     {
@@ -131,6 +141,11 @@ public class DeviceBody : MonoBehaviour
         {
             Operationtime--;
             recordedWave = levelController.currenWave;
+            //存储记录天数
+            string sa = DeviceNumber + "记录天数";
+            PlayerPrefs.SetInt(sa, recordedWave);
+            Debug.Log(sa + recordedWave);
+
         }
 
         if (Operationtime > 0)
@@ -138,14 +153,16 @@ public class DeviceBody : MonoBehaviour
             ProduceButtonBody.SetActive(false);
             Operating.text = "运行中\n" + "还剩" + Operationtime + "天";
         }
-        else if(levelController.currenWave > 1)
+        else if(Operationtime == 0&&recordedWave!=-1)
         { 
-            Operationtime = 0;
             Debug.Log("完成生产");
             if(Product1num != 0) kuManager.AddNumber(Product1name, Product1num);
             if (Product2num != 0) kuManager.AddNumber(Product2name, Product2num);
             ProduceButtonBody.SetActive(true); 
         }
+        string s = DeviceNumber + "剩余时间";
+        PlayerPrefs.SetInt(s, Operationtime);
+        Debug.Log(s + Operationtime);
     }
 
     //开始运行
@@ -158,6 +175,12 @@ public class DeviceBody : MonoBehaviour
         if(RM1num!=0)kuManager.SubtractNumber(RM1name,RM1num);
         if(RM2num!=0)kuManager.SubtractNumber(RM2name,RM2num);
         if(RM3num!=0)kuManager.SubtractNumber(RM3name,RM3num);
+        //存储记录天数
+        string s = DeviceNumber + "记录天数";
+        PlayerPrefs.SetInt(s, levelController.currenWave);
+        Debug.Log(s + recordedWave);
+
+
         UpdateOperationStatus();
     }
 

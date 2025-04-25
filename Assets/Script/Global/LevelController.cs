@@ -16,7 +16,7 @@ public class LevelController : MonoBehaviour
     public KuManager kuManager;
     public Transform playerTransform;
     //当前天数
-    public int currenWave = 1;
+    public int currenWave;
     //敌人预制体
     public GameObject enemyG;
     public GameObject enemyR;
@@ -30,10 +30,16 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        Instance=this;
+        if(Instance==null)Instance=this;
         GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
         equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
     }
+
+    private void Start()
+    {
+        currenWave = PlayerPrefs.GetInt("当前游戏天数", 1);
+    }
+
     public void GameStart()
     {
         waveTimer = 30;
@@ -85,7 +91,7 @@ public class LevelController : MonoBehaviour
         StartCoroutine(SwawnEnemy(enemyBoss, 16f));
     }
 
-    //随机位置
+    //分配随机位置
     private Vector3 GetRandomPosition(Bounds bounds)
     {
     restart:
@@ -147,6 +153,7 @@ public class LevelController : MonoBehaviour
     {
         GoodEndingPanel.GetComponent<CanvasGroup>().alpha = 1;
         currenWave = 1;
+        PlayerPrefs.DeleteAll();
         StopAllCoroutines();
         kuManager.ReSetKu();
         StartCoroutine(routine: Gomenu(5f,0));
@@ -159,6 +166,7 @@ public class LevelController : MonoBehaviour
         if(currenWave>=6)GoodEnding();
         else
         {
+            PlayerPrefs.SetInt("当前游戏天数", currenWave);
             _successPanel.GetComponent<CanvasGroup>().alpha = 1;
             StopAllCoroutines();
             StartCoroutine(routine: Gomenu(time,1));
@@ -172,6 +180,7 @@ public class LevelController : MonoBehaviour
 
     }
 
+    //返回村庄
     IEnumerator Gomenu(float time,int num)
     {
         equipmentManagerInBag.UnReadyForBattle();
@@ -183,7 +192,7 @@ public class LevelController : MonoBehaviour
         equipmentManagerInBag.UnReadyForBattle();
     }
 
-    //前往下一关
+    //前往异界
     public void NextLevel()
     {
         Debug.Log("ToPlay");
