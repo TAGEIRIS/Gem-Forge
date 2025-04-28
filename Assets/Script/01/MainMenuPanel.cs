@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenuPanel : MonoBehaviour
 {
     private Button StartButton;
+    private Button ContinueButton;
     private Button SetButton;
     private Button ExitButton;
 
@@ -15,6 +16,7 @@ public class MainMenuPanel : MonoBehaviour
     private void Awake()
     {
         StartButton =GameObject.Find("StartButton").GetComponent<Button>();
+        ContinueButton = GameObject.Find("ContinueButton").GetComponent<Button> ();
         SetButton=GameObject.Find("SetButton").GetComponent <Button>();
         ExitButton = GameObject.Find("ExitButton").GetComponent<Button>();
         SettingUI = GameObject.Find("Settings");
@@ -24,8 +26,13 @@ public class MainMenuPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ContinueButton.onClick.AddListener(call: () =>
+        {
+            SceneManager.LoadScene("02-SelectPlace");
+        });
         StartButton.onClick.AddListener(call: () =>
         {
+            PlayerPrefs.DeleteAll();
             SceneManager.LoadScene("02-SelectPlace");
         });
         SetButton.onClick.AddListener(call: () =>

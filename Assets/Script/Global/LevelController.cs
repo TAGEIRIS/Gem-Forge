@@ -33,13 +33,8 @@ public class LevelController : MonoBehaviour
         if(Instance==null)Instance=this;
         GameObject gameObject = GameObject.Find("EquipmentManagerInBag");
         equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
+        SceneManager.sceneLoaded += (_,_) => { currenWave = PlayerPrefs.GetInt("当前游戏天数", 1); };
     }
-
-    private void Start()
-    {
-        currenWave = PlayerPrefs.GetInt("当前游戏天数", 1);
-    }
-
     public void GameStart()
     {
         waveTimer = 30;
@@ -187,10 +182,6 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(num);
     }
-    private void OnDestroy()
-    {
-        equipmentManagerInBag.UnReadyForBattle();
-    }
 
     //前往异界
     public void NextLevel()
@@ -200,4 +191,10 @@ public class LevelController : MonoBehaviour
         equipmentManagerInBag.UnEquipAll();
         SceneManager.LoadScene("03-GamePlay");
     }
+    private void OnDestroy()
+    {
+        equipmentManagerInBag.UnReadyForBattle();
+        SceneManager.sceneLoaded -= (_, _) => { currenWave = PlayerPrefs.GetInt("当前游戏天数", 1); };
+    }
+
 }
