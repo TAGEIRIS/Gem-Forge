@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9161116410855229683}
   - component: {fileID: 2175370110419457326}
-  - component: {fileID: 1715902569297989330}
+  - component: {fileID: 3085852539961104308}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1715902569297989330
+--- !u!114 &3085852539961104308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1882612141085555730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1232688e15ebc24eb8ad6c7c12138c7, type: 3}
+  m_Script: {fileID: 11500000, guid: cd85a161a711e704fa80968f631b152e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAttack: 0
