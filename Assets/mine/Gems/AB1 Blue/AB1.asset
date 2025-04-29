@@ -17,6 +17,8 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 3c9805506cdde8f44889fc034ab0097e, type: 3}
   itemNumber: 4
   itemNumberMax: 99
-  SellingPrice: 5
+  SellingPrice: 2
+  BuyingPrice: 5
+  isLocked: 0
   itemInfo: "\u84DD\u5B9D\n\u6700\u57FA\u7840\u7684\u9ED1\u6697\u5B9D\u77F3\u4E4B\u4E00\uFF0C\u62E5\u6709\u8F83\u9AD8\u7684\u4F24\u5BB3\u4E0E\u8F83\u5927\u7684\u5F39\u5E55\uFF0C\u4F46\u5C04\u901F\u8F83\u6162\n\u4F24\u5BB3
     8\n\u5C04\u7A0B 12\n\u51B7\u5374 2s\n\u4E3B\u52A8\u6280\u80FD \u65E0"

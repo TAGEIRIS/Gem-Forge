@@ -22,6 +22,7 @@ public class Slot : MonoBehaviour
     public Text summaryText;
     //价格显示文本
     public Text sellingNumber;
+    public Text buyingNumber;
 
 
     private void Awake()
@@ -34,15 +35,14 @@ public class Slot : MonoBehaviour
         GameObject gameObject1 = GameObject.Find("SellingNumber");
         sellingNumber = gameObject1.GetComponent<Text>();
 
+        gameObject = GameObject.Find("BuyingNumber");
+        buyingNumber = gameObject.GetComponent <Text>();
+
         gameObject1 = GameObject.Find("MoneyManager");
         moneyManager = gameObject1.GetComponent<MoneyManager>();
     }
 
     private void Start()
-    {
-    }
-
-    private void OnEnable()
     {
         UpdateSlot();
 
@@ -64,7 +64,7 @@ public class Slot : MonoBehaviour
             slotNum.enabled = false;
             slotImage.color = new Color(slotImage.color.r, slotImage.color.g, slotImage.color.b, 0.3f);
         }
-
+        moneyManager.updatesellnbuy(this);
     }
 
 
@@ -111,7 +111,11 @@ public class Slot : MonoBehaviour
         string s = slotItem.SellingPrice.ToString();
         s += "金币";
         sellingNumber.text = s;
+        s=slotItem.BuyingPrice.ToString();
+        s += "金币";
+        buyingNumber.text = s;
         moneyManager.slot=this;
+        moneyManager.updatesellnbuy(this);
     }
 
     // 当鼠标指针进入游戏对象时调用

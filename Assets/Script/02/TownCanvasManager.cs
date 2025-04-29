@@ -15,11 +15,6 @@ public class TownCanvasManager : MonoBehaviour
         ToPlace(0);
     }
 
-
-
-
-
-
     public void ToPlace(int num)
     {
         Clear();

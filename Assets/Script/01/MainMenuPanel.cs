@@ -32,6 +32,7 @@ public class MainMenuPanel : MonoBehaviour
         });
         StartButton.onClick.AddListener(call: () =>
         {
+            KuManager.Instance.ReSetKu();
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene("02-SelectPlace");
         });

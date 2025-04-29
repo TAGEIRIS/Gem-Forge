@@ -28,17 +28,23 @@ public class KuManager : MonoBehaviour
         gemDictionary["AW1"] = FindGem("AW1");
         gemDictionary["AW2"] = FindGem("AW2");
         gemDictionary["BB1"] = FindGem("BB1");
-
-        ReSetKu();
     }
 
     public void ReSetKu()
     {
-        gemDictionary["AB1"].itemNumber = PlayerPrefs.GetInt("AB1" + "的当前数量", 4);
-        gemDictionary["AB2"].itemNumber = PlayerPrefs.GetInt("AB2" + "的当前数量", 4);
-        gemDictionary["AW1"].itemNumber = PlayerPrefs.GetInt("AW1" + "的当前数量", 4);
-        gemDictionary["AW2"].itemNumber = PlayerPrefs.GetInt("AW2" + "的当前数量", 4);
-        gemDictionary["BB1"].itemNumber = PlayerPrefs.GetInt("BB1" + "的当前数量", 0);
+        //设置数量
+        gemDictionary["AB1"].itemNumber = 4;
+        gemDictionary["AB2"].itemNumber = 4;
+        gemDictionary["AW1"].itemNumber = 4;
+        gemDictionary["AW2"].itemNumber = 4;
+        gemDictionary["BB1"].itemNumber = 0;
+
+        //设置解锁情况
+        gemDictionary["AB1"].isLocked = false;
+        gemDictionary["AB2"].isLocked = false;
+        gemDictionary["AW1"].isLocked = false;
+        gemDictionary["AW2"].isLocked = false;
+        gemDictionary["BB1"].isLocked = true;
 
         GemsKu.MoneyNumber = PlayerPrefs.GetInt("钱",0);
     }
@@ -85,7 +91,6 @@ public class KuManager : MonoBehaviour
         {
             gemDictionary[itemKey].itemNumber = Mathf.Clamp
                 (gemDictionary[itemKey].itemNumber, 0, gemDictionary[itemKey].itemNumberMax);
-            newPlayerPrefs(itemKey,GetItemNumber(itemKey));
 
         }
     }
@@ -102,13 +107,5 @@ public class KuManager : MonoBehaviour
         }
         Debug.LogError($"Gem not found: {gemName}");
         return null;
-    }
-
-    public void newPlayerPrefs(string itemKey,int num)
-    {
-        if (gemDictionary.ContainsKey(itemKey))
-        {
-            PlayerPrefs.SetInt(itemKey + "的当前数量", num);
-        }
     }
 }

@@ -7,8 +7,12 @@ public class MoneyManager : MonoBehaviour
 {
     private Text MoneyShow;
     public KuManager kuManager;
-    //出售按钮
+    //出售按钮及其本体
     public Button SellingButton;
+    public GameObject SellingBody;
+    //购买按钮
+    public Button BuyingButton;
+    public GameObject BuyingBody;
     //当前选中的物品
     public Slot slot;
 
@@ -20,21 +24,57 @@ public class MoneyManager : MonoBehaviour
         GameObject gameObject1 = GameObject.Find("Money");
         MoneyShow = gameObject1.GetComponent<Text>(); 
 
-        GameObject gameObject2 = GameObject.Find("SellingButton");
-        SellingButton = gameObject2.GetComponent<Button>();
+        SellingBody = GameObject.Find("SellingButton");
+        SellingButton = SellingBody.GetComponent<Button>();
+
+        BuyingBody = GameObject.Find("BuyingButton");
+        BuyingButton = BuyingBody.GetComponent<Button>();
     }
     private void Start()
     {
         UpdateMoney();
 
         SellingButton.onClick.AddListener(() => sell(slot, 1));
+        BuyingButton.onClick.AddListener(()=>Buy(slot, 1));
     }
+
+    public void updatesellnbuy(Slot Gem)
+    {
+        if (SellingBody == null) return;
+        if(BuyingBody == null) return; 
+        SellingBody.SetActive(true);
+        BuyingBody.SetActive(true);
+        if(Gem == null)
+        {
+            SellingBody.SetActive(false);
+            BuyingBody.SetActive(false) ;
+        }
+        if (Gem.slotItem.itemNumber < 1)
+        {
+            SellingBody.SetActive(false);
+        }
+        if (kuManager.GemsKu.MoneyNumber < Gem.slotItem.BuyingPrice)
+        {
+            BuyingBody.SetActive(false );
+        }
+        if(Gem.slotItem.isLocked==true)
+        {
+            BuyingBody.SetActive(false);
+        }
+    }
+
     public void sell(Slot Gem,int number)
     {
         if (Gem == null) return;
-        if (Gem.slotItem.itemNumber < number) { return; }
         addMoney(Gem.slotItem.SellingPrice *number);
         kuManager.SubtractNumber(Gem.slotItem.GemName, number);
+        Gem.UpdateSlot();
+    }
+    public void Buy(Slot Gem,int number)
+    {
+        if(Gem == null) return;
+        subMoney(Gem.slotItem.BuyingPrice *number);
+        kuManager.AddNumber(Gem.slotItem.GemName,number);
         Gem.UpdateSlot();
     }
     public void addMoney(int money)

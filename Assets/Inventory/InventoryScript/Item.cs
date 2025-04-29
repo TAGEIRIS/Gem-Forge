@@ -12,5 +12,9 @@ public class Item : ScriptableObject
     public int itemNumberMax=99;
     //出售价格
     public int SellingPrice;
+    //购入价格
+    public int BuyingPrice;
+    //是否锁住(当第一次正式获取到该宝石时解锁)
+    public bool isLocked; 
     [TextArea]public string itemInfo;
 }
