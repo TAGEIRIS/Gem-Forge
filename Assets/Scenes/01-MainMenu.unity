@@ -775,6 +775,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &177559860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177559861}
+  - component: {fileID: 177559862}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &177559861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177559860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1021439574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &177559862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177559860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11088344294dcc6468cd603cf1a2758c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _map: {fileID: 0}
+  nowmap: Meadow
 --- !u!1 &183799988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,17 +1849,10 @@ MonoBehaviour:
   kuManager: {fileID: 271977607}
   playerTransform: {fileID: 0}
   currenWave: 1
-  enemyG: {fileID: 5492328279456071030, guid: 413443416bc86c1408c315ddea1f588b, type: 3}
-  enemyR: {fileID: 7717460405460451610, guid: 98d71d35819900247b8ecb2e9dad84db, type: 3}
-  enemyB: {fileID: 426887594126618079, guid: 6a2170b56a4ae3142b897f7da768b16c, type: 3}
-  enemyWCG: {fileID: 5021026077665693220, guid: d9f1e7ca827d2ab43bc8cd2acb43bfff,
-    type: 3}
-  enemyBoss: {fileID: 7717460405460451610, guid: 70f06c56e312fde498c38036e77a929c,
-    type: 3}
   enemy_List: []
-  _map: {fileID: 0}
   equipmentManagerInBag: {fileID: 0}
   isPlay: 0
+  map: {fileID: 0}
 --- !u!1 &657319120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,6 +2432,7 @@ Transform:
   - {fileID: 250359141}
   - {fileID: 636484845}
   - {fileID: 271977606}
+  - {fileID: 177559861}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024352846

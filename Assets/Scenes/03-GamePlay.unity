@@ -869,8 +869,9 @@ GameObject:
   m_Component:
   - component: {fileID: 508257363}
   - component: {fileID: 508257364}
+  - component: {fileID: 508257365}
   m_Layer: 0
-  m_Name: map
+  m_Name: Meadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,15 +885,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508257362}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1354, y: 6.8225, z: 5.0514}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.5724525, y: -17.888697, z: -11939.275}
   m_LocalScale: {x: 16.945726, y: 21.389587, z: 1.9569588}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1399378475}
   - {fileID: 1700103226}
   - {fileID: 1891107445}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1645557303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &508257364
 SpriteRenderer:
@@ -946,6 +947,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &508257365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508257362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd806e2d59a882345a528304fad56e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _map: {fileID: 0}
+  enemyG: {fileID: 5492328279456071030, guid: 413443416bc86c1408c315ddea1f588b, type: 3}
+  enemyR: {fileID: 7717460405460451610, guid: 98d71d35819900247b8ecb2e9dad84db, type: 3}
+  enemyB: {fileID: 426887594126618079, guid: 6a2170b56a4ae3142b897f7da768b16c, type: 3}
+  enemyWCG: {fileID: 5021026077665693220, guid: d9f1e7ca827d2ab43bc8cd2acb43bfff,
+    type: 3}
+  enemyBoss: {fileID: 7717460405460451610, guid: 70f06c56e312fde498c38036e77a929c,
+    type: 3}
 --- !u!1 &534491201
 GameObject:
   m_ObjectHideFlags: 0
@@ -7201,6 +7222,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568239717}
   m_CullTransparentMesh: 1
+--- !u!1 &1645557302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1645557303}
+  m_Layer: 0
+  m_Name: maps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1645557303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645557302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.4370527, y: 24.711197, z: 11944.327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 508257363}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700103225
 GameObject:
   m_ObjectHideFlags: 0
@@ -9217,7 +9270,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 508257363}
+  - {fileID: 1645557303}
   - {fileID: 329383746}
   - {fileID: 1360850677}
   - {fileID: 2095569650}

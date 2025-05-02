@@ -22,11 +22,13 @@ public class Player : MonoBehaviour
 
         GameObject gameObject = GameObject.Find("LevelController");
         levelController = gameObject.GetComponent<LevelController>();
+    }
+
+    private void Start()
+    {
         levelController.GameStart();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if(isDead) return;

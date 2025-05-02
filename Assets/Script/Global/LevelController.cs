@@ -17,16 +17,13 @@ public class LevelController : MonoBehaviour
     public Transform playerTransform;
     //当前天数
     public int currenWave;
-    //敌人预制体
-    public GameObject enemyG;
-    public GameObject enemyR;
-    public GameObject enemyB;
-    public GameObject enemyWCG;
-    public GameObject enemyBoss;
     public List<EnemyBase> enemy_List;//敌人列表
-    public Transform _map;
     public EquipmentManagerInBag equipmentManagerInBag;
     public bool isPlay;
+
+    //地图
+    public Meadow meadow;
+
 
     private void Awake()
     {
@@ -35,59 +32,24 @@ public class LevelController : MonoBehaviour
         equipmentManagerInBag = gameObject.GetComponent<EquipmentManagerInBag>();
         SceneManager.sceneLoaded += (_,_) => { currenWave = PlayerPrefs.GetInt("当前游戏天数", 1); };
     }
+
     public void GameStart()
     {
+       
         waveTimer = 30;
         isPlay = true;
-        if (_map == null) _map = GameObject.Find("map").transform;
         if (_failPanel == null) _failPanel = GameObject.Find("FailPanel");
         if (_successPanel == null) _successPanel = GameObject.Find("SuccessPanel");
         if (GoodEndingPanel == null) GoodEndingPanel = GameObject.Find("GoodEndingPanel");
         GameObject gameObject = GameObject.Find("player");
         playerTransform = gameObject.transform;
-        //生成敌人
-        GenerateEnemy();
-    }
-    public void GenerateEnemy()
-    {
-        if (isPlay == false) return;
 
-        if (currenWave == 1) D1();
-        else if (currenWave == 2) D2();
-        else if (currenWave == 3) D3();
-        else if (currenWave == 4) D4();
-        else if (currenWave == 5) D5();
-    }
-
-    //关卡敌人生成
-    public void D1()
-    {
-        StartCoroutine(SwawnEnemy(enemyG, 0.2f));
-    }
-    public void D2()
-    {
-        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyB, 0.6f));
-    }
-    public void D3()
-    {
-        StartCoroutine(SwawnEnemy(enemyG, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyR, 1f));
-    }
-    public void D4()
-    {
-        StartCoroutine(SwawnEnemy(enemyR, 0.5f));
-        StartCoroutine(SwawnEnemy(enemyWCG, 0.8f));
-    }
-    public void D5()
-    {
-        StartCoroutine(SwawnEnemy(enemyR, 0.3f));
-        StartCoroutine(SwawnEnemy(enemyB, 0.8f));
-        StartCoroutine(SwawnEnemy(enemyBoss, 16f));
+        meadow = GameObject.Find("Meadow").GetComponent<Meadow>();
+        meadow.Startgame();
     }
 
     //分配随机位置
-    private Vector3 GetRandomPosition(Bounds bounds)
+    public Vector3 GetRandomPosition(Bounds bounds)
     {
     restart:
         float safeDistance = 5f;
@@ -97,20 +59,6 @@ public class LevelController : MonoBehaviour
         if (Mathf.Abs(randomX - playerTransform.position.x) < safeDistance) goto restart;
         if(Mathf.Abs(randomY - playerTransform.position.y) < safeDistance) goto restart;
         return new Vector3(randomX,randomY,randomZ);
-    }
-    //产生敌人的协程
-    IEnumerator SwawnEnemy(GameObject En,float CD)
-    {
-        while (waveTimer > 0 && Player.Instance.hp > 0)
-        {
-            yield return new WaitForSeconds(CD);
-
-            var spawnPoint = GetRandomPosition(_map.GetComponent<SpriteRenderer>().bounds);
-
-            EnemyBase go = Instantiate(En, spawnPoint, Quaternion.identity)
-                .GetComponent<EnemyBase>();
-            enemy_List.Add(go);
-        }
     }
 
     void Update()
