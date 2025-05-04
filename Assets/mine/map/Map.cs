@@ -12,6 +12,11 @@ public abstract class Map : MonoBehaviour
     {
         levelController = LevelController.Instance;
     }
+
+    private void Start()
+    {
+        Startgame();
+    }
     //产生敌人的协程
     protected IEnumerator SwawnEnemy(GameObject En, float CD)
     {

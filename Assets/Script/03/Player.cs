@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         if (levelController.isPlay == true)
         {
             levelController.isPlay = false;
-            levelController.LevelOver(3f,true);
+            levelController.BadGame();
         }
     }
 

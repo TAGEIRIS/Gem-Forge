@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public static LevelController Instance;
 
     public float waveTimer;
+    //结束时弹出面板
     public GameObject _failPanel;
     public GameObject _successPanel;
     public GameObject GoodEndingPanel;
@@ -21,8 +22,10 @@ public class LevelController : MonoBehaviour
     public EquipmentManagerInBag equipmentManagerInBag;
     public bool isPlay;
 
-    //地图
-    public Meadow meadow;
+    //选中地图
+    public string NowMap;
+    //地图加载器
+    public MapLoader mapLoader;
 
 
     private void Awake()
@@ -44,8 +47,8 @@ public class LevelController : MonoBehaviour
         GameObject gameObject = GameObject.Find("player");
         playerTransform = gameObject.transform;
 
-        meadow = GameObject.Find("Meadow").GetComponent<Meadow>();
-        meadow.Startgame();
+        mapLoader = GameObject.Find("maps").GetComponent<MapLoader>();
+        mapLoader.GameStart();
     }
 
     //分配随机位置
@@ -74,7 +77,7 @@ public class LevelController : MonoBehaviour
                 if (isPlay == true)
                 { 
                     isPlay = false;
-                    LevelOver(3f,true); 
+                    LevelOver(3f, true);
                 }
             }
 
@@ -120,7 +123,13 @@ public class LevelController : MonoBehaviour
     //游戏失败(毁档)
     public void BadGame()
     {
-
+        _failPanel.GetComponent<CanvasGroup>().alpha = 1;
+        currenWave = 1;
+        PlayerPrefs.DeleteAll();
+        StopAllCoroutines();
+        kuManager.ReSetKu();
+        StartCoroutine(routine: Gomenu(5f, 0));
+        ClearMonster();
     }
 
     //返回村庄

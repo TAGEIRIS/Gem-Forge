@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meadow : Map
+public class City : Map
 {
     //敌人预制体
     public GameObject enemyG;
@@ -10,11 +10,10 @@ public class Meadow : Map
     public GameObject enemyB;
     public GameObject enemyWCG;
     public GameObject enemyBoss;
-
     //关卡敌人生成
     public override void D1()
     {
-        StartCoroutine(SwawnEnemy(enemyG, 0.2f));
+        StartCoroutine(SwawnEnemy(enemyBoss, 0.1f));
     }
     public override void D2()
     {
