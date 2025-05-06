@@ -47,6 +47,7 @@ public class LevelController : MonoBehaviour
         GameObject gameObject = GameObject.Find("player");
         playerTransform = gameObject.transform;
 
+        NowMap = PlayerPrefs.GetString("当前地图", "Meadow");
         mapLoader = GameObject.Find("maps").GetComponent<MapLoader>();
         mapLoader.GameStart();
     }
@@ -109,9 +110,14 @@ public class LevelController : MonoBehaviour
     public void LevelOver(float time, bool next)
     {
         if(next==true)currenWave++;
-        if(currenWave>=6)GoodEnding();
+        if(currenWave>=16)GoodEnding();
         else
         {
+            if (currenWave <= 5) NowMap = "Meadow";
+            else if (currenWave <= 10) NowMap = "Temple";
+            else if (currenWave <= 15) NowMap = "City";
+            PlayerPrefs.SetString("当前地图",NowMap);
+
             PlayerPrefs.SetInt("当前游戏天数", currenWave);
             _successPanel.GetComponent<CanvasGroup>().alpha = 1;
             StopAllCoroutines();

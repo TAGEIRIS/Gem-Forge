@@ -1806,7 +1806,7 @@ MonoBehaviour:
   enemy_List: []
   equipmentManagerInBag: {fileID: 0}
   isPlay: 0
-  NowMap: City
+  NowMap: Temple
   mapLoader: {fileID: 0}
 --- !u!1 &657319120
 GameObject:

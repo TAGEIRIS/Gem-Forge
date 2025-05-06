@@ -44,11 +44,11 @@ public abstract class Map : MonoBehaviour
     {
         if (levelController.isPlay == false) return;
 
-        if (levelController.currenWave == 1) D1();
-        else if (levelController.currenWave == 2) D2();
-        else if (levelController.currenWave == 3) D3();
-        else if (levelController.currenWave == 4) D4();
-        else if (levelController.currenWave == 5) D5();
+        if (levelController.currenWave % 5 == 1) D1();
+        else if (levelController.currenWave % 5 == 2) D2();
+        else if (levelController.currenWave % 5 == 3) D3();
+        else if (levelController.currenWave % 5 == 4) D4();
+        else if (levelController.currenWave % 5 == 0) D5();
     }
     public virtual void D1() { }
     public virtual void D2() { }

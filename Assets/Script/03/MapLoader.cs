@@ -16,6 +16,7 @@ public class MapLoader : MonoBehaviour
         //Ìí¼ÓµØÍ¼½ø×Öµä
         maps.Add("Meadow", GameObject.Find("Meadow"));
         maps.Add("City", GameObject.Find("City"));
+        maps.Add("Temple", GameObject.Find("Temple"));
 
     }
 

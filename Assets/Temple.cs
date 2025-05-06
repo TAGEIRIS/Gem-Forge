@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class City : Map
+public class Temple : Map
 {
     //敌人预制体
     public GameObject enemyG;
@@ -13,7 +13,7 @@ public class City : Map
     //关卡敌人生成
     public override void D1()
     {
-        StartCoroutine(SwawnEnemy(enemyB, 0.3f));
+        StartCoroutine(SwawnEnemy(enemyB, 5f));
     }
     public override void D2()
     {
