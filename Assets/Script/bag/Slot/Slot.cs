@@ -42,12 +42,10 @@ public class Slot : MonoBehaviour
         moneyManager = gameObject1.GetComponent<MoneyManager>();
     }
 
-    private void Start()
+    private void Update()
     {
         UpdateSlot();
-
     }
-
 
     //¸üÐÂslotÏÔÊ¾
     public void UpdateSlot()
@@ -64,7 +62,6 @@ public class Slot : MonoBehaviour
             slotNum.enabled = false;
             slotImage.color = new Color(slotImage.color.r, slotImage.color.g, slotImage.color.b, 0.3f);
         }
-        moneyManager.updatesellnbuy(this);
     }
 
 

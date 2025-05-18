@@ -28,6 +28,7 @@ public class KuManager : MonoBehaviour
         gemDictionary["AW1"] = FindGem("AW1");
         gemDictionary["AW2"] = FindGem("AW2");
         gemDictionary["BB1"] = FindGem("BB1");
+        gemDictionary["BW1"] = FindGem("BW1");
     }
 
     public void ReSetKu()
@@ -38,6 +39,7 @@ public class KuManager : MonoBehaviour
         gemDictionary["AW1"].itemNumber = 4;
         gemDictionary["AW2"].itemNumber = 4;
         gemDictionary["BB1"].itemNumber = 0;
+        gemDictionary["BW1"].itemNumber = 4;
 
         //设置解锁情况
         gemDictionary["AB1"].isLocked = false;
@@ -45,6 +47,7 @@ public class KuManager : MonoBehaviour
         gemDictionary["AW1"].isLocked = false;
         gemDictionary["AW2"].isLocked = false;
         gemDictionary["BB1"].isLocked = true;
+        gemDictionary["BW1"].isLocked = true;
 
         GemsKu.MoneyNumber = PlayerPrefs.GetInt("钱",0);
     }

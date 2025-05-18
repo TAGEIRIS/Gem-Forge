@@ -7,6 +7,8 @@ public abstract class Map : MonoBehaviour
 {
     protected LevelController levelController;
     public Transform _map;
+    //±¦Ê¯µôÂäÎï
+    public Dictionary<string, int> DroppedGems;
 
     private void Awake()
     {

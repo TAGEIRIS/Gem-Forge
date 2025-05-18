@@ -8,7 +8,7 @@ public class ReLoad : MonoBehaviour
     EquipmentManagerInBag equipmentManagerInBag;
     LevelController levelController;
 
-    public Button ToPlayButton;
+    public GameObject tipwindow;
     private void Awake()
     {
         if(equipmentManagerInBag == null)
@@ -21,10 +21,15 @@ public class ReLoad : MonoBehaviour
             GameObject gameObject = GameObject.Find("LevelController");
             levelController = gameObject.GetComponent<LevelController>();
         }
+        tipwindow.SetActive(false);
     }
     public void ToPlay()
     {
-        levelController.NextLevel();
+        if(equipmentManagerInBag.equippedItems.Count <4&&!tipwindow.activeSelf)
+        {
+            tipwindow.SetActive(true);
+        }
+        else levelController.NextLevel();
     }
     private void OnEnable()
     {

@@ -40,6 +40,7 @@ public class MoneyManager : MonoBehaviour
 
     public void updatesellnbuy(Slot Gem)
     {
+        Debug.Log(Gem.name);
         if (SellingBody == null) return;
         if(BuyingBody == null) return; 
         SellingBody.SetActive(true);
@@ -51,11 +52,12 @@ public class MoneyManager : MonoBehaviour
         }
         if (Gem.slotItem.itemNumber < 1)
         {
+            Debug.Log("物品数量不足，不予出售权限");
             SellingBody.SetActive(false);
         }
         if (kuManager.GemsKu.MoneyNumber < Gem.slotItem.BuyingPrice)
         {
-            BuyingBody.SetActive(false );
+            BuyingBody.SetActive(false);
         }
         if(Gem.slotItem.isLocked==true)
         {
@@ -63,6 +65,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
+    //出售宝石
     public void sell(Slot Gem,int number)
     {
         if (Gem == null) return;
@@ -70,6 +73,8 @@ public class MoneyManager : MonoBehaviour
         kuManager.SubtractNumber(Gem.slotItem.GemName, number);
         Gem.UpdateSlot();
     }
+
+    //购入宝石
     public void Buy(Slot Gem,int number)
     {
         if(Gem == null) return;
@@ -77,6 +82,8 @@ public class MoneyManager : MonoBehaviour
         kuManager.AddNumber(Gem.slotItem.GemName,number);
         Gem.UpdateSlot();
     }
+
+    //对钱的修改
     public void addMoney(int money)
     {
         kuManager.GemsKu.MoneyNumber += money;
@@ -87,7 +94,6 @@ public class MoneyManager : MonoBehaviour
         kuManager.GemsKu.MoneyNumber -= money;
         UpdateMoney();
     }
-
     public void setMoney(int money) 
     {
         kuManager.GemsKu.MoneyNumber = Mathf.Clamp(money, 0, 99999);
