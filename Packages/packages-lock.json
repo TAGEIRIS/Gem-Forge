@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.roytheunissen.guid-search": {
+      "version": "https://github.com/RoyTheunissen/GUID-Search.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b004d12eafa6338d27d46d205a7ef2158b085f0b"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.1",
       "depth": 1,

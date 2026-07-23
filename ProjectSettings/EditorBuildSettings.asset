@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/_Scenes/01-MainMenu.unity
+    path: Assets/_Project/Scenes/01-MainMenu.unity
     guid: 977b51a80f36d4c41beb14e9f230ae4d
   - enabled: 1
-    path: Assets/_Project/_Scenes/02-SelectPlace.unity
+    path: Assets/_Project/Scenes/02-SelectPlace.unity
     guid: 4734e5d2c41548f49b4d49cd06acff98
   - enabled: 1
-    path: Assets/_Project/_Scenes/03-GamePlay.unity
+    path: Assets/_Project/Scenes/03-GamePlay.unity
     guid: 44c54507adf2d2e448ffc89db17506d6
   - enabled: 0
     path: Assets/Scenes/04-GemStore.unity
