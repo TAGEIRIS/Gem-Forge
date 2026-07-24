@@ -5,6 +5,11 @@
 
 创建 PlayerDataManager 单例聚合所有数据。
 ScriptableObject 仅作为"单个模板"使用。
+实际操作中发现之前代码数据和逻辑耦合到一块了,现在必须先做拆分,新增1.1任务
+
+1.1重构装置代码
+
+
 
 2.重做发射系统
 由原先的manager实例化宝石，宝石实例化并发射子弹，改为更贴合“**数据（ScriptableObject ID）与实体（Prefab 实例）分离**”的工厂模式，新增子弹工厂并将发射功能转移到aimmanager上去，宝石仅作为数据的载体，所有Prefab的生成必须经过Factory，所有瞄准器的管理必须经过Manager

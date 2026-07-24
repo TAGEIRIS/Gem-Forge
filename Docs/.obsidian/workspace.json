@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Refactor_Plan.md",
+                "file": "DevLogs/Week01_2026-07-22.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Refactor_Plan"
+              "title": "Week01_2026-07-22"
             }
           }
         ],
@@ -214,10 +214,10 @@
   },
   "active": "f4a44be96a6b4d9f",
   "lastOpenFiles": [
-    "DevLogs/Week01_2026-07-22.md",
     "Refactor_Plan.md",
-    "DevLogs/Base.md",
+    "DevLogs/Week01_2026-07-22.md",
     "DevLogs/CodingKey.md",
+    "DevLogs/Base.md",
     "DevLogs/base.md",
     "临时感悟(记得加到本周感悟里面).md"
   ]
