@@ -6,11 +6,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig", menuName = "Config/GameConfig")]
 public class GameConfig : ScriptableObject
 {
-
-    public  List<GemConfig> AllGems = new List<GemConfig>();
-    public  List<ProjectileConfig> AllProjectiles = new List<ProjectileConfig>();
-    public  List<DeviceConfig> AllDevices = new List<DeviceConfig>();
-    public  List<EnemyConfig> AllEnemies = new List<EnemyConfig>();
+    [Header("=== 宝石配置 ===")]
+    [Tooltip("所有宝石的配置列表")]
+    public List<GemConfig> AllGems = new List<GemConfig>();
+    
+    [Header("=== 弹药配置 ===")]
+    [Tooltip("所有弹药的配置列表")]
+    public List<ProjectileConfig> AllProjectiles = new List<ProjectileConfig>();
+    
+    [Header("=== 装置配置 ===")]
+    [Tooltip("所有装置的配置列表")]
+    public List<DeviceConfig> AllDevices = new List<DeviceConfig>();
+    
+    [Header("=== 敌人配置 ===")]
+    [Tooltip("所有敌人的配置列表")]
+    public List<EnemyConfig> AllEnemies = new List<EnemyConfig>();
 
     //单例：懒加载
     private static GameConfig _instance;
@@ -21,12 +31,12 @@ public class GameConfig : ScriptableObject
             if (_instance == null)
             {
                 _instance = Resources.Load<GameConfig>("GameConfig");
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 if (_instance == null)
                 {
                     Debug.LogError("GameConfig.asset 未找到！请放置在 Resources 文件夹下");
                 }
-                #endif
+#endif
             }
             return _instance;
         }
