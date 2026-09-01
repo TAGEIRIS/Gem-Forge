@@ -27,6 +27,14 @@ public class CrossSaveData
     public int totalPlayCount;
     public int totalDaysSurvived;
     public float totalPlayTime;
+
+    [Header("=== 设置偏好 ===")]
+    public bool isFullscreen = true;
+    public int resolutionIndex = 0;      // 0=1920x1080, 1=2560x1440, 2=3840x2160
+    public float masterVolume = 1f;
+    public float musicVolume = 0.8f;
+    public float sfxVolume = 0.8f;
+    public string language = "zh-CN";
 }
 
 // ========================================
@@ -72,6 +80,7 @@ public class BattleSaveData
     public int enemiesKilled;                     // 本晚击杀数
     public float battleTime;                      // 本晚战斗时间
 }
+
 
 
 [System.Serializable]
