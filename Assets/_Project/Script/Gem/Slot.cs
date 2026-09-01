@@ -14,8 +14,6 @@ public class Slot : MonoBehaviour
     public Text slotNum;
     //装备管理器
     public EquipmentManagerInBag equipmentManagerInBag;
-    //金钱管理器（交易）
-    public MoneyManager moneyManager;
     //下一件装备应该放的位置
     public int slotIndex;
     //物品简介显示文本
@@ -38,8 +36,6 @@ public class Slot : MonoBehaviour
         gameObject = GameObject.Find("BuyingNumber");
         buyingNumber = gameObject.GetComponent <Text>();
 
-        gameObject1 = GameObject.Find("MoneyManager");
-        moneyManager = gameObject1.GetComponent<MoneyManager>();
     }
 
     private void Update()
@@ -105,14 +101,7 @@ public class Slot : MonoBehaviour
     private void UpdateSelectedItem()
     {
         if(slotItem!=null)summaryText.text = slotItem.itemInfo;
-        string s = slotItem.SellingPrice.ToString();
-        s += "金币";
-        sellingNumber.text = s;
-        s=slotItem.BuyingPrice.ToString();
-        s += "金币";
-        buyingNumber.text = s;
-        moneyManager.slot=this;
-        moneyManager.updatesellnbuy(this);
+
     }
 
     // 当鼠标指针进入游戏对象时调用

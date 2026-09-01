@@ -47,6 +47,7 @@ public class RunSaveData
     public int currentDay = 1;
     public bool isNight;
     public string currentMap;
+    public int loseNum = 0;
 
     [Header("=== 资源（全部以宝石形式存在） ===")]
     public List<GemOwnership> ownedGems = new List<GemOwnership>();      // 所有宝石（数量）

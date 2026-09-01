@@ -12,9 +12,6 @@ public class KuManager : MonoBehaviour
     // 字典用于存储宝石的引用
     private Dictionary<string, Item> gemDictionary = new Dictionary<string, Item>();
 
-    public event Action OnMoneyChanged;
-
-
     private void Awake()
     {
         if(Instance == null)
