@@ -8,15 +8,12 @@ public class GemConfig : ScriptableObject
 {
     public string Id;
     public string displayName;
+    //宝石图标
     public Sprite icon;
     //宝石类型
     public GemType gemType;
     public bool isActive;          // true=主动按键触发，false=被动自动触发
     public GameObject GemPrefab;
-    //出售价格
-    public int SellingPrice;
-    //购入价格
-    public int BuyingPrice;
     // 子弹配置ID
     public string GemProjectileId;
     //宝石简介
