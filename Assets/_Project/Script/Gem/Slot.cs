@@ -61,7 +61,7 @@ public class Slot : MonoBehaviour
     }
 
 
-    //增加宝石数量
+    //增加宝石数量  
     public void AddSlot()
     {
         if (slotItem.itemNumber < slotItem.itemNumberMax)

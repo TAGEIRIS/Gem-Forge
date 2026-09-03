@@ -39,7 +39,6 @@ public class PageRouter : MonoBehaviour
 
     public void Initialize(GameSaveData data)
     {
-        Debug.Log("fuck");
         Transfer("MainCanvas");
     }
 
@@ -56,6 +55,10 @@ public class PageRouter : MonoBehaviour
             {
                 page.SetActive(true);
                 Debug.Log($"切换到页面：{pageName}");
+                if(pageName == "BagCanvas")
+                {
+                    SlotManager.Instance.Initialize();
+                }
                 return;
             }
         }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e03d2745d4dfda4bb1b3780242842cc, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  AllGems: []
+  AllGems:
+  - {fileID: 11400000, guid: 5a8c51c0e82b52547b94548f32d55bc8, type: 2}
   AllProjectiles: []
   AllDevices: []
   AllEnemies: []

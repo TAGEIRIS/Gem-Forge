@@ -37,6 +37,7 @@ public class SaveManager : MonoBehaviour
     // ===== 事件 =====
     public event Action OnGameLoaded;
     public event Action OnGameSaved;
+    public event Action OnSaveReset;
 
     // ===== 文件路径 =====
     private string SavePath => Path.Combine(Application.persistentDataPath, "gamesave.json");
@@ -56,7 +57,7 @@ public class SaveManager : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
-        
+
         _saveData = new GameSaveData();
         LoadGame();
     }
@@ -86,7 +87,7 @@ public class SaveManager : MonoBehaviour
             {
                 string json = File.ReadAllText(SavePath);
                 _saveData = JsonUtility.FromJson<GameSaveData>(json);
-                
+
                 if (_saveData == null)
                 {
                     Debug.LogWarning("存档数据损坏，创建新存档");
@@ -102,13 +103,13 @@ public class SaveManager : MonoBehaviour
                 Debug.Log("📁 未找到存档，创建新存档");
                 CreateNewSave();
             }
-            
+
             OnGameLoaded?.Invoke();
         }
         catch (Exception e)
         {
             Debug.LogError($"❌ 加载存档失败：{e.Message}");
-            
+
             // 尝试从备份恢复
             if (File.Exists(BackupPath))
             {
@@ -125,7 +126,7 @@ public class SaveManager : MonoBehaviour
                 }
                 catch { }
             }
-            
+
             CreateNewSave();
         }
     }
@@ -144,11 +145,11 @@ public class SaveManager : MonoBehaviour
             }
 
             string json = JsonUtility.ToJson(_saveData, true);
-            
+
             // 先写临时文件
             string tempPath = SavePath + ".tmp";
             File.WriteAllText(tempPath, json);
-            
+
             // 备份旧存档
             if (File.Exists(SavePath))
             {
@@ -160,13 +161,13 @@ public class SaveManager : MonoBehaviour
                 File.Delete(SavePath);
             }
             File.Move(tempPath, SavePath);
-            
-            Debug.Log("✅ 存档已保存");
+
+            Debug.Log("存档已保存");
             OnGameSaved?.Invoke();
         }
         catch (Exception e)
         {
-            Debug.LogError($"❌ 保存存档失败：{e.Message}");
+            Debug.LogError($"保存存档失败：{e.Message}");
         }
     }
 
@@ -176,8 +177,40 @@ public class SaveManager : MonoBehaviour
     public void CreateNewSave()
     {
         _saveData = new GameSaveData();
+
+        // ===== CrossSaveData：使用类里的默认值，不需要额外设置 =====
+
+        // ===== RunSaveData：初始值 =====
+        _saveData.runData.currentDay = 1;
+        _saveData.runData.isNight = false;
+        _saveData.runData.currentMap = "起点";
+        _saveData.runData.loseNum = 0;
+
+        // 初始宝石：根据你的设计，送 3 颗基础宝石
+        _saveData.runData.ownedGems = new List<GemOwnership>
+    {
+        new GemOwnership { gemId = "blue", count = 3 }
+    };
+
+        _saveData.runData.ownedDevices = new List<string>();
+
+        // 4 个装备槽位，全部为空
+        _saveData.runData.equippedGems = new List<string>();
+        _saveData.runData.equippedDevices = new List<OperateDevice>();
+        _saveData.runData.unlockedGemsThisRun = new List<string>();
+        _saveData.runData.unlockedDevicesThisRun = new List<string>();
+
+        // ===== BattleSaveData：初始值 =====
+        _saveData.battleData.currentHp = 10;
+        _saveData.battleData.maxHp = 10;
+        _saveData.battleData.currentDefense = 0;
+        _saveData.battleData.tempGems = new List<string>();
+        _saveData.battleData.enemiesKilled = 0;
+        _saveData.battleData.battleTime = 0;
+
+        OnSaveReset?.Invoke();  // 通知所有订阅者
         SaveGame();
-        Debug.Log("📁 新存档已创建");
+        Debug.Log("新存档已创建");
     }
 
     /// <summary>
@@ -188,16 +221,16 @@ public class SaveManager : MonoBehaviour
         if (keepCrossData)
         {
             var crossData = _saveData.crossData;
-            _saveData = new GameSaveData();
-            _saveData.crossData = crossData;
+            CreateNewSave();  // 创建初始存档
+            _saveData.crossData = crossData;  // 恢复跨存档数据
         }
         else
         {
-            _saveData = new GameSaveData();
+            CreateNewSave();  // 完全重置
         }
-        
+
         SaveGame();
-        Debug.Log("🔄 游戏已重置");
+        Debug.Log("游戏已重置");
     }
 
     /// <summary>
@@ -210,11 +243,11 @@ public class SaveManager : MonoBehaviour
             if (File.Exists(SavePath)) File.Delete(SavePath);
             if (File.Exists(BackupPath)) File.Delete(BackupPath);
             if (File.Exists(SavePath + ".tmp")) File.Delete(SavePath + ".tmp");
-            Debug.Log("🗑️ 存档文件已删除");
+            Debug.Log("存档文件已删除");
         }
         catch (Exception e)
         {
-            Debug.LogError($"❌ 删除存档失败：{e.Message}");
+            Debug.LogError($"删除存档失败：{e.Message}");
         }
     }
 
@@ -224,5 +257,13 @@ public class SaveManager : MonoBehaviour
     public bool HasSaveFile()
     {
         return File.Exists(SavePath);
+    }
+
+    private void OnDestroy()
+    {
+        // 取消所有事件订阅，避免悬空引用
+        OnGameLoaded = null;
+        OnGameSaved = null;
+        OnSaveReset = null;
     }
 }
