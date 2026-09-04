@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevLogs/Week02_2026-08-31.md",
+                "file": "DevLogs/Week01_2026-07-22.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Week02_2026-08-31"
+              "title": "Week01_2026-07-22"
             }
           }
         ],
@@ -216,9 +216,9 @@
   },
   "active": "f4a44be96a6b4d9f",
   "lastOpenFiles": [
-    "Refactor_Plan.md",
-    "DevLogs/Week01_2026-07-22.md",
     "DevLogs/Week02_2026-08-31.md",
+    "DevLogs/Week01_2026-07-22.md",
+    "Refactor_Plan.md",
     "DevLogs/Base.md",
     "DevLogs/CodingKey.md",
     "DevLogs/base.md",
