@@ -3213,7 +3213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gemSlotContainer: {fileID: 1561623917}
-  _equipmentSlotUIs: []
+  _equipmentSlotUIs:
+  - {fileID: 731724211}
+  - {fileID: 583944986}
+  - {fileID: 1749295029}
+  - {fileID: 1471313691}
   _detailTextUI: {fileID: 1354753826}
 --- !u!1 &979719662
 GameObject:
