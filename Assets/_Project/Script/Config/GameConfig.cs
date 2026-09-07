@@ -1,65 +1,62 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//总配置文件，包含所有宝石、敌人，弹药和装置的配置
-[CreateAssetMenu(fileName = "GameConfig", menuName = "Config/GameConfig")]
-public class GameConfig : ScriptableObject
+namespace GameData
 {
-    [Header("=== 宝石配置 ===")]
-    [Tooltip("所有宝石的配置列表")]
-    public List<GemConfig> AllGems = new List<GemConfig>();
-    
-    [Header("=== 弹药配置 ===")]
-    [Tooltip("所有弹药的配置列表")]
-    public List<ProjectileConfig> AllProjectiles = new List<ProjectileConfig>();
-    
-    [Header("=== 装置配置 ===")]
-    [Tooltip("所有装置的配置列表")]
-    public List<DeviceConfig> AllDevices = new List<DeviceConfig>();
-    
-    [Header("=== 敌人配置 ===")]
-    [Tooltip("所有敌人的配置列表")]
-    public List<EnemyConfig> AllEnemies = new List<EnemyConfig>();
-
-    //单例：懒加载
-    private static GameConfig _instance;
-    public static GameConfig Instance
+    [CreateAssetMenu(fileName = "GameConfig", menuName = "Config/GameConfig")]
+    public class GameConfig : ScriptableObject
     {
-        get
+        [Header("=== 宝石配置 ===")]
+        public List<GemConfig> AllGems = new List<GemConfig>();
+
+        [Header("=== 弹药配置 ===")]
+        public List<ProjectileConfig> AllProjectiles = new List<ProjectileConfig>();
+
+        [Header("=== 装置配置 ===")]
+        public List<DeviceConfig> AllDevices = new List<DeviceConfig>();
+
+        [Header("=== 敌人配置 ===")]
+        public List<EnemyConfig> AllEnemies = new List<EnemyConfig>();
+
+        [Header("=== 行为策略配置 ===")]
+        public List<BehaviorConfig> AllBehaviors = new List<BehaviorConfig>();
+
+        private static GameConfig _instance;
+        public static GameConfig Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = Resources.Load<GameConfig>("GameConfig");
-#if UNITY_EDITOR
                 if (_instance == null)
                 {
-                    Debug.LogError("GameConfig.asset 未找到！请放置在 Resources 文件夹下");
+                    _instance = Resources.Load<GameConfig>("GameConfig");
                 }
-#endif
+                return _instance;
             }
-            return _instance;
         }
-    }
 
+        public GemConfig GetGemConfigById(string id)
+        {
+            return AllGems.Find(g => g.Id == id);
+        }
 
-    public GemConfig GetGemConfigById(string id)
-    {
-        return AllGems.Find(gem => gem.Id == id);
-    }
+        public ProjectileConfig GetProjectileConfigById(string id)
+        {
+            return AllProjectiles.Find(p => p.Id == id);
+        }
 
-    public ProjectileConfig GetProjectileConfigById(string id)
-    {
-        return AllProjectiles.Find(projectile => projectile.Id == id);
-    }
+        public DeviceConfig GetDeviceConfigById(string id)
+        {
+            return AllDevices.Find(d => d.Id == id);
+        }
 
-    public DeviceConfig GetDeviceConfigById(string id)
-    {
-        return AllDevices.Find(device => device.Id == id);
-    }
+        public EnemyConfig GetEnemyConfigById(string id)
+        {
+            return AllEnemies.Find(e => e.Id == id);
+        }
 
-    public EnemyConfig GetEnemyConfigById(string id)
-    {
-        return AllEnemies.Find(enemy => enemy.Id == id);
+        public BehaviorConfig GetBehaviorConfigById(string id)
+        {
+            return AllBehaviors.Find(b => b.Id == id);
+        }
     }
 }

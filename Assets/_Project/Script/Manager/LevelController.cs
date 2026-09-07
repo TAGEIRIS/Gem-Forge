@@ -90,10 +90,10 @@ public class LevelController : MonoBehaviour
     //清空怪物
     public void ClearMonster()
     {
-        for (int i = 0; i < enemy_List.Count; i++)
-        {
-            if (enemy_List[i]!=null)enemy_List[i].Dead();
-        }
+        // for (int i = 0; i < enemy_List.Count; i++)
+        // {
+        //     if (enemy_List[i]!=null)enemy_List[i].Dead();
+        // }
     }
     //游戏胜利
     public void GoodEnding()

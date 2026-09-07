@@ -1,22 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//宝石配置
-[CreateAssetMenu(fileName = "GemConfig", menuName = "Config/GemConfig")]
-public class GemConfig : ScriptableObject
+namespace GameData
 {
-    public string Id;
-    public string displayName;
-    //宝石图标
-    public Sprite icon;
-    //宝石类型
-    public GemType gemType;
-    public bool isActive;          // true=主动按键触发，false=被动自动触发
-    public GameObject GemPrefab;
-    // 子弹配置ID
-    public string GemProjectileId;
-    //宝石简介
-    [TextArea] public string itemInfo;
-}
+    [CreateAssetMenu(fileName = "GemConfig", menuName = "Config/GemConfig")]
+    public class GemConfig : ScriptableObject
+    {
+        public string Id;
+        public string displayName;
+        public Sprite icon;
+        public GemType gemType;
+        public bool isActive;
+        public GameObject GemPrefab;
 
+        // 宝石的子弹ID（如果宝石会发射子弹）
+        public string GemProjectileId;
+
+        // 宝石自身的策略列表（回血、闪现、散射、定身等）
+        public List<BehaviorEntry> gemBehaviors = new List<BehaviorEntry>();
+
+        [TextArea]
+        public string itemInfo;
+    }
+}

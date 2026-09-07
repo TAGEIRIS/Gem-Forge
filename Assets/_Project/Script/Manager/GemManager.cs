@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameData;
 using UnityEngine;
 
 public class GemManager : MonoBehaviour
