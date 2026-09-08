@@ -21,12 +21,12 @@ public class Player : MonoBehaviour
         PlayerVisual = GameObject.Find("PlayerVisual").transform;
 
         GameObject gameObject = GameObject.Find("LevelController");
-        levelController = gameObject.GetComponent<LevelController>();
+        //levelController = gameObject.GetComponent<LevelController>();
     }
 
     private void Start()
     {
-        levelController.GameStart();
+        //levelController.GameStart();
     }
 
     void Update()

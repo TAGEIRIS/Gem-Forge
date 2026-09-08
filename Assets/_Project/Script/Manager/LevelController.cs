@@ -49,7 +49,7 @@ public class LevelController : MonoBehaviour
 
         NowMap = PlayerPrefs.GetString("当前地图", "Meadow");
         mapLoader = GameObject.Find("maps").GetComponent<MapLoader>();
-        mapLoader.GameStart();
+        //mapLoader.GameStart();
     }
 
     //分配随机位置

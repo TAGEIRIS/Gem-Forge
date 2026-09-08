@@ -16,4 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a8c51c0e82b52547b94548f32d55bc8, type: 2}
   AllProjectiles: []
   AllDevices: []
-  AllEnemies: []
+  AllEnemies:
+  - {fileID: 11400000, guid: 2695702fe9e018543b913282fb41b7bc, type: 2}
+  AllBehaviors: []
