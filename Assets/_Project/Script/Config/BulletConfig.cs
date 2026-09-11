@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace GameData
 {
-    [CreateAssetMenu(fileName = "ProjectileConfig", menuName = "Config/ProjectileConfig")]
-    public class ProjectileConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "BulletConfig", menuName = "Config/BulletConfig")]
+    public class BulletConfig : ScriptableObject
     {
         public string Id;
         public string displayName;
         public Sprite icon;
-        public ProjectileType projectileType;
-        public GameObject ProjectilePrefab;
+        public BulletType bulletType;
+        public GameObject bulletPrefab;
 
         // 子弹固有属性
         public float speed;
@@ -18,6 +18,6 @@ namespace GameData
         public int baseDamage;
 
         // 子弹自身的策略列表（追踪、穿透、分裂、弹射等）
-        public List<BehaviorEntry> projectileBehaviors = new List<BehaviorEntry>();
+        public List<BehaviorEntry> bulletBehaviors = new List<BehaviorEntry>();
     }
 }

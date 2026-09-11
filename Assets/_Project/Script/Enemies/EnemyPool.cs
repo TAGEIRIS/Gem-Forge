@@ -47,8 +47,6 @@ public class EnemyPool : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // ==================== 方案A：Preload 一次性加载 ====================
-
     /// <summary>
     /// 预加载本关所有敌人类型
     /// 在 LevelManager 加载地图时调用

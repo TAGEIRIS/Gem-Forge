@@ -19,5 +19,28 @@ MonoBehaviour:
   isActive: 1
   GemPrefab: {fileID: 3652266553260401869, guid: d49745ee79de2764f87ae007f28e8026,
     type: 3}
-  GemProjectileId: BlueD
+  GemBulletId: BlueD
+  gemBehaviors:
+  - behaviorId: AimAuto
+    damageOverride: 0
+    durationOverride: 0
+    rangeOverride: 0
+    countOverride: 0
+    chanceOverride: 0
+    overrideDamage: 0
+    overrideDuration: 0
+    overrideRange: 0
+    overrideCount: 0
+    overrideChance: 0
+  - behaviorId: FireAuto
+    damageOverride: 0
+    durationOverride: 0
+    rangeOverride: 0
+    countOverride: 0
+    chanceOverride: 0
+    overrideDamage: 0
+    overrideDuration: 0
+    overrideRange: 0
+    overrideCount: 0
+    overrideChance: 0
   itemInfo: "\u84DD\u5B9D\n\u6700\u57FA\u7840\u7684\u5B9D\u77F3\u4E4B\u4E00\uFF0C\u62E5\u6709\u8F83\u9AD8\u7684\u4F24\u5BB3\u4E0E\u8F83\u5927\u7684\u5F39\u5E55\uFF0C\u4F46\u5C04\u901F\u8F83\u6162"

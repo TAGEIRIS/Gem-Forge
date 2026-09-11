@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7869684856914193253}
   - component: {fileID: 5154102758633942009}
-  - component: {fileID: -8472238007168512329}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -85,24 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8472238007168512329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6016895215404153533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de68cd454c8fc00429d7f959f904f294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttack: 0
-  isCooling: 0
-  Range: 3
-  AttackTimer: 0
-  enemy: {fileID: 0}
-  CD: 1.2
-  originZ: 0
-  Dan: {fileID: 1305224475077127618, guid: 94f1f2d5c7619534ea8c19ce02c67bef, type: 3}
-  DanSpeed: 20

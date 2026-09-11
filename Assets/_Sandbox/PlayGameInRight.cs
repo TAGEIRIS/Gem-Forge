@@ -5,85 +5,58 @@ using UnityEngine;
 [InitializeOnLoad]
 public class EditorStartupScene
 {
-    private static bool _isStarting = false;
-    private static string _previousScenePath;
-    private static bool _isWaitingToRestore = false;
+    private const string TargetScenePath = "Assets/_Project/Scenes/01-StartScene.unity";
+    private const string PrevSceneKey = "EditorStartupScene.PreviousScenePath";
+    private static bool _isSwitching = false;
 
     static EditorStartupScene()
     {
         EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-        EditorApplication.update += OnEditorUpdate;
     }
 
     private static void OnPlayModeStateChanged(PlayModeStateChange state)
     {
-        // ===== 进入 Play 模式前：切换到目标场景 =====
-        if (state == PlayModeStateChange.ExitingEditMode && !_isStarting)
+        // 进入 Play 前：记录并切换到目标场景
+        if (state == PlayModeStateChange.ExitingEditMode && !_isSwitching)
         {
-            _isStarting = true;
-            
-            string currentScene = EditorSceneManager.GetActiveScene().name;
-            string targetScene = "01-StartScene";
-
-            if (currentScene != targetScene)
+            var active = EditorSceneManager.GetActiveScene();
+            if (active.path == TargetScenePath)
             {
-                _previousScenePath = EditorSceneManager.GetActiveScene().path;
-                EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-
-                string scenePath = "Assets/_Project/Scenes/01-StartScene.unity";
-                EditorSceneManager.OpenScene(scenePath);
+                SessionState.EraseString(PrevSceneKey); // 本来就在目标场景
+                return;
             }
-            else
+
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
-                _previousScenePath = null;
+                // 用户取消保存，放弃切换
+                return;
             }
-        }
 
-        // ===== 退出 Play 模式后：标记需要恢复 =====
-        else if (state == PlayModeStateChange.ExitingPlayMode)
+            _isSwitching = true;
+            SessionState.SetString(PrevSceneKey, active.path);
+            EditorSceneManager.OpenScene(TargetScenePath);
+            _isSwitching = false;
+        }
+        // 完全退出 Play 后：恢复
+        else if (state == PlayModeStateChange.EnteredEditMode)
         {
-            if (!string.IsNullOrEmpty(_previousScenePath))
+            string prev = SessionState.GetString(PrevSceneKey, "");
+            if (!string.IsNullOrEmpty(prev) && System.IO.File.Exists(prev))
             {
-                _isWaitingToRestore = true;  // 标记等待恢复
-            }
-            _isStarting = false;
-        }
-
-        // ===== 进入 Play 模式后：重置标志 =====
-        else if (state == PlayModeStateChange.EnteredPlayMode)
-        {
-            _isStarting = false;
-        }
-    }
-
-    // ===== 每帧检查：在 Play 模式完全退出后恢复场景 =====
-    private static void OnEditorUpdate()
-    {
-        // 如果标记了需要恢复，并且当前不在 Play 模式（已经退出）
-        if (_isWaitingToRestore && !EditorApplication.isPlaying)
-        {
-            _isWaitingToRestore = false;
-
-            // 再次检查：确保恢复路径存在，且当前场景不是目标场景
-            if (!string.IsNullOrEmpty(_previousScenePath) && 
-                System.IO.File.Exists(_previousScenePath))
-            {
-                // 延迟一帧执行，确保 Unity 完全退出 Play 模式
+                // 用 delayCall 避免在状态回调里直接切场景
                 EditorApplication.delayCall += () =>
                 {
-                    // 再次检查当前场景是否已经是目标场景，避免重复加载
-                    string currentPath = EditorSceneManager.GetActiveScene().path;
-                    if (currentPath != _previousScenePath)
+                    if (EditorSceneManager.GetActiveScene().path != prev)
                     {
-                        EditorSceneManager.OpenScene(_previousScenePath);
-                        Debug.Log($"已恢复场景：{_previousScenePath}");
+                        EditorSceneManager.OpenScene(prev);
+                        Debug.Log($"已恢复场景：{prev}");
                     }
-                    _previousScenePath = null;
+                    SessionState.EraseString(PrevSceneKey);
                 };
             }
             else
             {
-                _previousScenePath = null;
+                SessionState.EraseString(PrevSceneKey);
             }
         }
     }

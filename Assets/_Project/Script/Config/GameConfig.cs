@@ -10,7 +10,7 @@ namespace GameData
         public List<GemConfig> AllGems = new List<GemConfig>();
 
         [Header("=== 弹药配置 ===")]
-        public List<ProjectileConfig> AllProjectiles = new List<ProjectileConfig>();
+        public List<BulletConfig> AllProjectiles = new List<BulletConfig>();
 
         [Header("=== 装置配置 ===")]
         public List<DeviceConfig> AllDevices = new List<DeviceConfig>();
@@ -39,7 +39,7 @@ namespace GameData
             return AllGems.Find(g => g.Id == id);
         }
 
-        public ProjectileConfig GetProjectileConfigById(string id)
+        public BulletConfig GetBulletConfigById(string id)
         {
             return AllProjectiles.Find(p => p.Id == id);
         }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2319914350199532280}
   - component: {fileID: 4852704515625914859}
   - component: {fileID: 8800404324625959437}
+  - component: {fileID: 2878760587284727752}
   m_Layer: 0
   m_Name: BlueD
-  m_TagString: Dan8
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2878760587284727752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334333328373384136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59df8d53bd245d74a8d3a4a604cf4a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifeTime: 10
+  defaultBehaviors: []
+  direction: {x: 0, y: 0}
+  currentLifeTime: 0
 --- !u!1001 &890503508593085910
 PrefabInstance:
   m_ObjectHideFlags: 0

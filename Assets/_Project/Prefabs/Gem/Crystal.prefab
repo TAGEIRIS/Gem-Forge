@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3084677133247781922}
   - component: {fileID: 506901257141945685}
-  - component: {fileID: -1402922576565874957}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -85,24 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1402922576565874957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4281586770168915842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bcc47856cccc94692525acc35a222b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttack: 0
-  isCooling: 0
-  Range: 20
-  AttackTimer: 0
-  enemy: {fileID: 0}
-  CD: 1
-  originZ: 0
-  Dan: {fileID: 4316025245154645690, guid: 19168e42e1c4e524b8ea21c70d920d2e, type: 3}
-  DanSpeed: 8

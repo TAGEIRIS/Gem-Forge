@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89b139595956564aabd1bd7dd126777, type: 3}
+  m_Name: BlueD
+  m_EditorClassIdentifier: 
+  Id: BlueD
+  displayName: 
+  icon: {fileID: 1435446960916012996, guid: 397bfc6fbd0916e47be3d3809f24c996, type: 3}
+  bulletType: 0
+  bulletPrefab: {fileID: 7334333328373384136, guid: 7097240ae4aa36b40a5a0ab64080bb9c,
+    type: 3}
+  speed: 0
+  Range: 0
+  baseDamage: 0
+  bulletBehaviors: []

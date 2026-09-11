@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2057626012783497511}
   - component: {fileID: 5396740563075558674}
-  - component: {fileID: -6984951205799255985}
   m_Layer: 0
   m_Name: Yellow
   m_TagString: Untagged
@@ -85,24 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6984951205799255985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6214156947021828485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea4540e72553c248b0e8bdd727177f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttack: 0
-  isCooling: 0
-  Range: 15
-  AttackTimer: 0
-  enemy: {fileID: 0}
-  CD: 0.8
-  originZ: 0
-  Dan: {fileID: 6474357074030303603, guid: 4edf5532276cd9e428dd577753716f3d, type: 3}
-  DanSpeed: 10

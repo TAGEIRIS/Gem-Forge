@@ -123,6 +123,12 @@ public class GemManager : MonoBehaviour
         return runData.equippedGems[slotIndex];
     }
 
+    public List<string> GetAllEquippedGems()
+    {
+        var runData = SaveManager.Instance.SaveData.runData;
+        return new List<string>(runData.equippedGems);
+    }
+
     /// <summary>
     /// 查找某宝石所在的槽位索引
     /// </summary>

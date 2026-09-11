@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2692011762183116457}
   - component: {fileID: 1862183934171207568}
-  - component: {fileID: 8170909044361398844}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -85,24 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8170909044361398844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652266553260401869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e6feb31a7552f47b526c515f9b6491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttack: 0
-  isCooling: 0
-  Range: 20
-  AttackTimer: 0
-  enemy: {fileID: 0}
-  CD: 0.8
-  originZ: 0
-  Dan: {fileID: 7334333328373384136, guid: 281a5dc5aa13dad4da7d07705d6fd8ad, type: 3}
-  DanSpeed: 20

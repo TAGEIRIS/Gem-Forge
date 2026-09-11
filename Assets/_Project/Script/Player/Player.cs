@@ -94,13 +94,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    //受到敌方弹幕的攻击
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("EnemyDan2"))
-        {
-            Injured(2f);
-        }
-    }
 
 }

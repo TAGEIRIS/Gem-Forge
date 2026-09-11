@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllGems:
   - {fileID: 11400000, guid: 5a8c51c0e82b52547b94548f32d55bc8, type: 2}
-  AllProjectiles: []
+  AllProjectiles:
+  - {fileID: 11400000, guid: 9f02bcfa00f7f174988144f524fe8489, type: 2}
   AllDevices: []
   AllEnemies:
   - {fileID: 11400000, guid: 2695702fe9e018543b913282fb41b7bc, type: 2}
-  AllBehaviors: []
+  AllBehaviors:
+  - {fileID: 11400000, guid: e5be6eb835d02b743b1e31b91d95ac5b, type: 2}
+  - {fileID: 11400000, guid: 76ac8759b7d47c546bca05d987c1aa27, type: 2}
+  - {fileID: 11400000, guid: 60442a84b8bf5da40b2245836a636fdc, type: 2}
+  - {fileID: 11400000, guid: 1dcff7e40bd0620489748bcb0bc69067, type: 2}
+  - {fileID: 11400000, guid: 3d7f357e51449994294ef97a67641e84, type: 2}
+  - {fileID: 11400000, guid: 93c16a4d0cff0334c89fd7930698284a, type: 2}

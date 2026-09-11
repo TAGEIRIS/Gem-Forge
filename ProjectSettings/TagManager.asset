@@ -5,10 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Dan8
-  - Dan4
-  - Dan2
-  - EnemyDan2
+  - Undefined
+  - Bullet
   layers:
   - Default
   - TransparentFX

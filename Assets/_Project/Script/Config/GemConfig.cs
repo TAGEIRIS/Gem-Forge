@@ -14,7 +14,7 @@ namespace GameData
         public GameObject GemPrefab;
 
         // 宝石的子弹ID（如果宝石会发射子弹）
-        public string GemProjectileId;
+        public string GemBulletId;
 
         // 宝石自身的策略列表（回血、闪现、散射、定身等）
         public List<BehaviorEntry> gemBehaviors = new List<BehaviorEntry>();

@@ -1,4 +1,4 @@
-﻿// ========================================
+// ========================================
 // 文件位置：Assets/_Project/Script/Enemies/EnemyBase.cs
 // 职责：敌人基础组件（供 ResetToConfig 使用）
 // 注意：这只是简化版，后续状态机实现时会扩展
@@ -15,7 +15,6 @@ public class EnemyBase : MonoBehaviour
 
     [Header("配置引用（只读）")]
     public string enemyId;
-
     private EnemyConfig cachedConfig;
 
     /// <summary>
